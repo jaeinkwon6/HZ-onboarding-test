@@ -1,0 +1,347 @@
+/* Custom CSS for Account Selection Mobile App */
+
+/* Self-hosted Nordnet Sans Mono font */
+@font-face {
+    font-family: 'Nordnet Sans Mono';
+    src: url('../Asset/nordnet-sans-mono/nordnet-sans-mono-regular.woff2') format('woff2'),
+         url('../Asset/nordnet-sans-mono/nordnet-sans-mono-regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nordnet Sans Mono';
+    src: url('../Asset/nordnet-sans-mono/nordnet-sans-mono-regular-italic.woff2') format('woff2'),
+         url('../Asset/nordnet-sans-mono/nordnet-sans-mono-regular-italic.woff') format('woff');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nordnet Sans Mono';
+    src: url('../Asset/nordnet-sans-mono/nordnet-sans-mono-bold.woff2') format('woff2'),
+         url('../Asset/nordnet-sans-mono/nordnet-sans-mono-bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nordnet Sans Mono';
+    src: url('../Asset/nordnet-sans-mono/nordnet-sans-mono-bold-italic.woff2') format('woff2'),
+         url('../Asset/nordnet-sans-mono/nordnet-sans-mono-bold-italic.woff') format('woff');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nordnet Sans Mono';
+    src: url('../Asset/nordnet-sans-mono/nordnet-sans-mono-extrabold.woff2') format('woff2'),
+         url('../Asset/nordnet-sans-mono/nordnet-sans-mono-extrabold.woff') format('woff');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nordnet Sans Mono';
+    src: url('../Asset/nordnet-sans-mono/nordnet-sans-mono-extrabold-italic.woff2') format('woff2'),
+         url('../Asset/nordnet-sans-mono/nordnet-sans-mono-extrabold-italic.woff') format('woff');
+    font-weight: 800;
+    font-style: italic;
+    font-display: swap;
+}
+
+/* Mobile-first responsive design */
+@media (max-width: 640px) {
+    .mobile-container {
+        max-width: 100%;
+        margin: 0;
+    }
+}
+
+/* Custom animations for mobile interactions */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+/* Apply animations */
+.animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-slide-in {
+    animation: slideIn 0.5s ease-out;
+}
+
+.animate-pulse {
+    animation: pulse 2s infinite;
+}
+
+/* Mobile-specific styles */
+.mobile-container {
+    max-width: 375px;
+    margin: 0 auto;
+    min-height: 100vh;
+    background: #ffffff;
+    position: relative;
+}
+
+/* Status bar styling */
+.status-bar {
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    background: #ffffff;
+}
+
+/* Progress bar styling */
+.progress-bar {
+    height: 4px;
+    background: #f5f5f5;
+    border-radius: 100px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #1c1c1c;
+    border-radius: 100px;
+    transition: width 0.3s ease;
+}
+
+/* Account card styling */
+.account-card {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.12), 0px 0px 20px 0px rgba(0, 0, 0, 0.06);
+    border: 1px solid #f0f0f0;
+    transition: all 0.2s ease;
+}
+
+.account-card:hover {
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16), 0px 0px 24px 0px rgba(0, 0, 0, 0.08);
+    transform: translateY(-1px);
+}
+
+/* Badge styling */
+.account-badge {
+    width: 32px;
+    height: 32px;
+    background: #333333;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* Selection badge styling */
+.selection-badge {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid #bdbdbd;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.selection-badge.selected {
+    background: #1c1c1c;
+    border-color: #1c1c1c;
+}
+
+.selection-badge.selected::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: #ffffff;
+    border-radius: 50%;
+}
+
+/* Button styling */
+.continue-button {
+    background: #1c1c1c;
+    color: #ffffff;
+    border: none;
+    border-radius: 100px;
+    padding: 12px 20px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    width: 100%;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.continue-button:hover {
+    background: #333333;
+    transform: translateY(-1px);
+}
+
+.continue-button:active {
+    transform: translateY(0);
+}
+
+/* Icon button styling */
+.icon-button {
+    background: #f5f5f5;
+    border: none;
+    border-radius: 16px;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.icon-button:hover {
+    background: #e5e5e5;
+}
+
+.icon-button:active {
+    transform: scale(0.95);
+}
+
+/* Home indicator styling */
+.home-indicator {
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-indicator-bar {
+    width: 134px;
+    height: 5px;
+    background: #1c1c1c;
+    border-radius: 100px;
+}
+
+/* Typography */
+.font-nordnet {
+    font-family: 'Nordnet Sans Mono', monospace;
+}
+
+.font-nordnet-regular {
+    font-weight: 400;
+}
+
+.font-nordnet-bold {
+    font-weight: 700;
+}
+
+.font-nordnet-extrabold {
+    font-weight: 800;
+}
+
+/* Text colors matching Figma design */
+.text-primary {
+    color: #1c1c1c;
+}
+
+.text-secondary {
+    color: #6e6e6e;
+}
+
+.text-white {
+    color: #ffffff;
+}
+
+/* Background colors */
+.bg-primary {
+    background: #1c1c1c;
+}
+
+.bg-secondary {
+    background: #f5f5f5;
+}
+
+.bg-white {
+    background: #ffffff;
+}
+
+/* Focus states for accessibility - DISABLED */
+button:focus,
+button:focus-visible,
+button:focus-within,
+.selection-badge:focus,
+.selection-badge:focus-visible,
+.selection-badge:focus-within {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Smooth transitions */
+* {
+    transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Text selection styling */
+::selection {
+    background-color: #1c1c1c;
+    color: white;
+}
+
+::-moz-selection {
+    background-color: #1c1c1c;
+    color: white;
+}
+
+/* Custom scrollbar for mobile */
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+/* Ensure proper touch targets for mobile */
+button, .selection-badge {
+    min-height: 44px;
+    min-width: 44px;
+}
+
+/* Safe area handling for mobile devices */
+@supports (padding: max(0px)) {
+    .mobile-container {
+        padding-left: max(16px, env(safe-area-inset-left));
+        padding-right: max(16px, env(safe-area-inset-right));
+    }
+}

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Selection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../design-system/design-system.css">
+    <script src="js/progress-stable.js"></script>
+    <script src="js/smooth-transitions.js"></script>
+    <script type="module" src="js/state.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'neutral-bg': '#ffffff',
+                        'neutral-100': '#f5f5f5',
+                        'neutral-text': '#1c1c1c',
+                        'neutral-text-weak': '#6e6e6e',
+                        'neutral-icon': '#1c1c1c',
+                        'neutral-border': '#bdbdbd',
+                    },
+                    fontFamily: {
+                        'nordnet': ['Nordnet Sans Mono', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                    },
+                    fontSize: {
+                        'h1': ['40px', { lineHeight: '48px', fontWeight: '800' }],
+                        'h2': ['32px', { lineHeight: '40px', fontWeight: '800' }],
+                        'h3': ['28px', { lineHeight: '32px', fontWeight: '800' }],
+                        'subtitle1': ['24px', { lineHeight: '28px', fontWeight: '800' }],
+                        'subtitle2': ['20px', { lineHeight: '24px', fontWeight: '700' }],
+                        'primary': ['16px', { lineHeight: '24px', fontWeight: '400' }],
+                        'secondary': ['14px', { lineHeight: '20px', fontWeight: '400' }],
+                        'tertiary': ['12px', { lineHeight: '16px', fontWeight: '400' }],
+                        'graph': ['10px', { lineHeight: '14px', fontWeight: '400' }],
+                    },
+                    fontWeight: {
+                        'regular': '400',
+                        'bold': '700',
+                        'extrabold': '800',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-neutral-bg flex items-center justify-center min-h-screen relative" style="background-color: var(--color-bg-medium);">
+    <!-- Mobile Container -->
+    <div class="w-full max-w-sm flex flex-col" style="height: 812px; background-color: var(--color-bg-default); min-width: 375px;">
+        <!-- iOS Status Bar -->
+        <div class="flex items-center justify-between px-[52px] pt-[28px] pb-[16px] pr-[28px]" style="background-color: var(--color-bg-default);">
+            <img src="../Asset/status-time.svg" alt="9:41" class="w-[33.328px] h-[12.576px]">
+            <img src="../Asset/status-icons.svg" alt="Status icons" class="w-[79.67px] h-[13px]">
+        </div>
+
+        <!-- Progress Header -->
+        <div class="progress-bar-with-controls">
+            <!-- Back Button -->
+            <button class="btn-icon-only btn-icon-default">
+                <div class="btn-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </div>
+            </button>
+            
+            <!-- Progress Bars -->
+            <div class="progress-container">
+                <div class="progress-step"></div>
+                <div class="progress-step"></div>
+                <div class="progress-step"></div>
+                <div class="progress-step"></div>
+            </div>
+            
+            <!-- Close Button -->
+            <button class="btn-icon-only btn-icon-default">
+                <div class="btn-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </div>
+            </button>
+        </div>
+        
+        <!-- Apply progress immediately after bar is rendered -->
+        <script>
+            if (window.__applyProgress__) window.__applyProgress__();
+        </script>
+
+        <!-- Main Content -->
+        <div class="flex-1 px-4 py-6 flex flex-col">
+            <!-- Section Header -->
+            <div class="mb-6">
+                <h1 class="typography-subtitle1 mb-3">
+                    Choose your starting accounts
+                </h1>
+                <p class="text-sm font-normal" style="color: var(--color-text-weak);">
+                    Set up your main accounts now. Pension, VL, and other options come after sign-up.
+                </p>
+            </div>
+
+            <!-- Account Cards -->
+            <div class="flex-1 flex flex-col gap-3 mb-6">
+                <!-- Depot Account Card (Selected) -->
+                <div class="card-selectable card-selected">
+                    <div class="card-badge">DEP</div>
+                    <div class="card-content">
+                        <div class="card-selectable-title">Depot account</div>
+                        <div class="card-selectable-description">
+                            Buy and manage stocks, ETFs, and other investments. Required for trading.
+                        </div>
+                    </div>
+                    <div class="card-radio">
+                        <svg class="card-radio-check" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2 6L5 9L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Savings Account Card (Unselected) -->
+                <div class="card-selectable">
+                    <div class="card-badge">S</div>
+                    <div class="card-content">
+                        <div class="card-selectable-title">Savings account</div>
+                        <div class="card-selectable-description">
+                            Buy and manage stocks, ETFs, and other investments. Required for trading.
+                        </div>
+                    </div>
+                    <div class="card-radio">
+                        <svg class="card-radio-check" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2 6L5 9L10 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Learn More Link -->
+            <p class="text-sm font-normal mb-6" style="color: var(--color-text-weak);">
+                Learn more about <a href="#" class="font-bold underline" style="color: var(--color-text-default);">Our account types</a>
+            </p>
+        </div>
+
+        <!-- Bottom Section -->
+        <div class="px-4 py-4" style="background-color: var(--color-bg-default);">
+            <a href="account-alias.html" class="btn btn-primary btn-large w-full" id="continue-btn">
+                Continue
+            </a>
+        </div>
+
+        <!-- Home Indicator -->
+        <div class="h-6 flex items-center justify-center" style="background-color: var(--color-bg-default);">
+            <div class="w-[134px] h-[5px] bg-neutral-text rounded-full"></div>
+        </div>
+    </div>
+
+    <!-- Home Button - Outside container, positioned absolutely -->
+    <a href="intro.html" class="absolute top-4 right-4 btn btn-primary btn-small">
+        Going back home
+    </a>
+
+    <script type="module">
+        import { getSelectedAccounts, setSelectedAccounts } from './js/state.js';
+
+        // Load saved selections on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedAccounts = getSelectedAccounts();
+            const cards = document.querySelectorAll('.card-selectable');
+            
+            cards.forEach(card => {
+                const title = card.querySelector('.card-selectable-title').textContent.trim();
+                if (savedAccounts.includes(title)) {
+                    card.classList.add('card-selected');
+                }
+            });
+        });
+
+        // Make cards interactive - toggle selection on click
+        document.querySelectorAll('.card-selectable').forEach(card => {
+            card.addEventListener('click', function() {
+                // Don't do anything if card is disabled
+                if (this.classList.contains('card-disabled')) {
+                    return;
+                }
+                
+                // Toggle selected state
+                this.classList.toggle('card-selected');
+                
+                // Save selections to state
+                saveSelections();
+            });
+
+            // Add keyboard support
+            card.setAttribute('tabindex', '0');
+            card.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    if (!this.classList.contains('card-disabled')) {
+                        this.classList.toggle('card-selected');
+                        saveSelections();
+                    }
+                }
+            });
+        });
+
+        // Save current selections to state
+        function saveSelections() {
+            const selectedCards = document.querySelectorAll('.card-selectable.card-selected');
+            const selectedAccounts = Array.from(selectedCards).map(card => 
+                card.querySelector('.card-selectable-title').textContent.trim()
+            );
+            setSelectedAccounts(selectedAccounts);
+        }
+
+        // Save selections when continuing
+        document.getElementById('continue-btn').addEventListener('click', function() {
+            saveSelections();
+        });
+    </script>
+</body>
+</html>

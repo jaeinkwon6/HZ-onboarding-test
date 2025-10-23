@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Tax Liability</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../design-system/design-system.css">
+    <script src="js/progress-stable.js"></script>
+    <script src="js/smooth-transitions.js"></script>
+    <script type="module" src="js/state.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'neutral-bg': '#ffffff',
+                        'neutral-100': '#f5f5f5',
+                        'neutral-text': '#1c1c1c',
+                        'neutral-text-weak': '#6e6e6e',
+                        'neutral-icon': '#1c1c1c',
+                        'neutral-border': '#bdbdbd',
+                    },
+                    fontFamily: {
+                        'nordnet': ['Nordnet Sans Mono', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-neutral-bg flex items-center justify-center min-h-screen relative" style="background-color: var(--color-bg-medium);">
+    <!-- Mobile Container with Fixed Height -->
+    <div class="w-full max-w-sm flex flex-col" style="height: 812px; background-color: var(--color-bg-default); min-width: 375px;">
+        <!-- iOS Status Bar -->
+        <div class="flex items-center justify-between px-[52px] pt-[28px] pb-[16px] pr-[28px]" style="background-color: var(--color-bg-default);">
+            <img src="../Asset/status-time.svg" alt="9:41" class="w-[33.328px] h-[12.576px]">
+            <img src="../Asset/status-icons.svg" alt="Status icons" class="w-[79.67px] h-[13px]">
+        </div>
+
+        <!-- Progress Header -->
+        <div class="progress-bar-with-controls">
+            <!-- Back Button -->
+            <button class="btn-icon-only btn-icon-default" onclick="window.location.href='citizenship.html'">
+                <div class="btn-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </div>
+            </button>
+            
+            <!-- Progress Bars -->
+            <div class="progress-container">
+                <div class="progress-step"></div>
+                <div class="progress-step"></div>
+                <div class="progress-step"></div>
+                <div class="progress-step"></div>
+            </div>
+            
+            <!-- Close Button -->
+            <button class="btn-icon-only btn-icon-default" onclick="window.location.href='index.html'">
+                <div class="btn-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </div>
+            </button>
+        </div>
+        
+        <!-- Apply progress immediately after bar is rendered -->
+        <script>
+            if (window.__applyProgress__) window.__applyProgress__();
+        </script>
+
+        <!-- Main Content -->
+        <div class="flex-1 px-4 py-6 flex flex-col overflow-y-auto">
+            <!-- Section Header -->
+            <div class="mb-6">
+                <h1 class="typography-subtitle1 mb-3">
+                    Your tax liability
+                </h1>
+                <p class="text-sm font-normal" style="color: var(--color-text-weak);">
+                    We're asking for tax number due to regulatory requirements.
+                </p>
+            </div>
+
+            <!-- Tax Card -->
+            <div class="bg-white box-border flex flex-col gap-4 p-4 rounded-lg w-full mb-6" style="box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.12), 0px 0px 20px 0px rgba(0,0,0,0.06);">
+                <!-- Country Header -->
+                <div class="flex gap-2 items-center w-full">
+                    <!-- Germany Flag Icon -->
+                    <div class="w-4 h-4 shrink-0">
+                        <svg viewBox="0 0 16 16" fill="none">
+                            <rect width="16" height="5.33" fill="#000000"/>
+                            <rect y="5.33" width="16" height="5.33" fill="#DD0000"/>
+                            <rect y="10.67" width="16" height="5.33" fill="#FFCE00"/>
+                        </svg>
+                    </div>
+                    
+                    <!-- Country Name -->
+                    <div class="flex-1">
+                        <p class="font-bold text-sm" style="color: var(--color-text-default);">Germany</p>
+                    </div>
+                    
+                    <!-- Remove Button -->
+                    <button class="font-bold text-sm" style="color: var(--color-text-default);">
+                        Remove
+                    </button>
+                </div>
+
+                <!-- Tax ID Input -->
+                <div class="bg-neutral-100 box-border flex gap-3 h-14 items-center px-3 py-4.5 rounded-lg w-full">
+                    <input 
+                        type="text" 
+                        placeholder="Tax ID (optional)"
+                        class="flex-1 bg-transparent border-none outline-none text-sm"
+                        style="color: var(--color-text-default);"
+                    />
+                </div>
+            </div>
+
+            <!-- Add Another Country -->
+            <button class="flex gap-2 items-center justify-center">
+                <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M8 1v14M1 8h14" stroke-linecap="round"/>
+                </svg>
+                <p class="font-bold text-base" style="color: var(--color-text-default);">
+                    Add another country
+                </p>
+            </button>
+        </div>
+
+        <!-- Bottom Section -->
+        <div class="px-4 py-4" style="background-color: var(--color-bg-default);">
+            <a href="KYC-1.html" class="btn btn-primary btn-large w-full">
+                Continue
+            </a>
+        </div>
+
+        <!-- Home Indicator -->
+        <div class="h-6 flex items-center justify-center" style="background-color: var(--color-bg-default);">
+            <div class="w-[134px] h-[5px] bg-neutral-text rounded-full"></div>
+        </div>
+    </div>
+
+    <!-- Home Button - Outside container, positioned absolutely -->
+    <a href="intro.html" class="absolute top-4 right-4 btn btn-primary btn-small">
+        Going back home
+    </a>
+</body>
+</html>
+

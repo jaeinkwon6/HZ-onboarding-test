@@ -1,0 +1,2373 @@
+/* ===================================
+   NORDNET DESIGN SYSTEM
+   Typography & Design Tokens
+   =================================== */
+
+/* ===================================
+   1. DESIGN TOKENS (CSS Variables)
+   =================================== */
+
+:root {
+    /* Font Family */
+    --font-family-primary: 'Nordnet Sans Mono', -apple-system, BlinkMacSystemFont, sans-serif;
+    
+    /* Font Weights */
+    --font-weight-regular: 400;
+    --font-weight-bold: 700;
+    --font-weight-extrabold: 800;
+    
+    /* ===== NEUTRAL COLORS ===== */
+    /* Text Colors */
+    --color-text-default: #1c1c1c;
+    --color-text-weak: #6e6e6e;
+    --color-text-medium: #ffffff;
+    --color-text-strong: #ffffff;
+    --color-text-disabled: #9e9e9e;
+    --color-text-focus: #1c1c1c;
+    --color-text-inactive: #9e9e9e;
+    
+    /* Background Colors */
+    --color-bg-default: #ffffff;
+    --color-bg-weak: #ffffff;
+    --color-bg-medium: #f5f5f5;
+    --color-bg-strong: #f5f5f5;
+    --color-bg-hover: #f5f5f599;
+    --color-bg-disabled: #eeeeee;
+    --color-bg-skeleton: #eeeeee;
+    --color-bg-active: #ffffff;
+    --color-bg-inactive: #e0e0e0;
+    --color-bg-select: #ffffff;
+    --color-bg-focus: #1c1c1c;
+    --color-bg-focus-hover: #262626;
+    --color-bg-focus-pressed: #333333;
+    --color-bg-badge: #333333;
+    --color-bg-brand-white: #ffffff;
+    --color-bg-brand-black: #000000;
+    --color-bg-overlay: #000000;
+    
+    /* Border Colors */
+    --color-border-default: #bdbdbd;
+    --color-border-weak: #eeeeee;
+    --color-border-medium: #e0e0e0;
+    --color-border-strong: #f5f5f5;
+    --color-border-active: #1c1c1c;
+    --color-border-background: #ffffff;
+    --color-border-disabled: #eeeeee;
+    --color-border-hover: #6e6e6e;
+    --color-border-brand: #000000;
+    
+    /* Icon Colors */
+    --color-icon-default: #1c1c1c;
+    --color-icon-weak: #6e6e6e;
+    --color-icon-medium: #ffffff;
+    --color-icon-strong: #ffffff;
+    --color-icon-disabled: #9e9e9e;
+    --color-icon-brand: #1c1c1c;
+    --color-icon-inactive: #9e9e9e;
+    
+    /* Data Colors */
+    --color-data-primary: #6e6e6e;
+    --color-data-secondary: #9e9e9e;
+    
+    /* ===== ACTION COLORS ===== */
+    /* Action Background Colors */
+    --color-action-bg-default: #336bff;
+    --color-action-bg-weak: #eaf0ff;
+    --color-action-bg-medium: #adc4ff;
+    --color-action-bg-strong: #1f4099;
+    --color-action-bg-disabled: #d6e1ff;
+    --color-action-bg-hover: #2650bf;
+    --color-action-bg-pressed: #1f4099;
+    --color-action-bg-brand: #00c8f5;
+    
+    /* Action Border Colors */
+    --color-action-border-default: #336bff;
+    --color-action-border-weak: #adc4ff;
+    --color-action-border-focus: #d6e1ff;
+    --color-action-border-hover: #2650bf;
+    --color-action-border-pressed: #1f4099;
+    
+    /* Action Icon Colors */
+    --color-action-icon-default: #336bff;
+    --color-action-icon-medium: #336bff;
+    --color-action-icon-hover: #2650bf;
+    --color-action-icon-pressed: #1f4099;
+    --color-action-icon-brand: #00c8f5;
+    
+    /* Action Data Colors */
+    --color-action-data-primary: #2650bf;
+    --color-action-data-secondary: #6690ff;
+    --color-action-data-tertiary: #adc4ff;
+    --color-action-data-quaternary: #d6e1ff;
+    --color-action-data-quinary: #142b66;
+    --color-action-data-graph: #336bff;
+    --color-action-data-allocation: #eaf0ff;
+    
+    /* ===== POSITIVE COLORS ===== */
+    --color-positive-bg-default: #41a21a;
+    --color-positive-bg-weak: #edfae8;
+    --color-positive-bg-medium: #85da62;
+    --color-positive-bg-strong: #41a21a;
+    --color-positive-bg-status: #51cb20;
+    --color-positive-bg-brand: #d2f500;
+    --color-positive-bg-secondary: #85da62;
+    --color-positive-border-default: #41a21a;
+    --color-positive-icon-default: #41a21a;
+    --color-positive-icon-focus: #51cb20;
+    --color-positive-icon-hover: #317a13;
+    --color-positive-icon-data: #41a21a;
+    --color-positive-icon-brand: #d2f500;
+    --color-positive-icon-status: #51cb20;
+    --color-positive-data: #b9eaa6;
+    
+    /* ===== NEGATIVE COLORS ===== */
+    --color-negative-bg-default: #cc2269;
+    --color-negative-bg-weak: #f6e7ee;
+    --color-negative-bg-medium: #cc2269;
+    --color-negative-bg-strong: #ac135a;
+    --color-negative-bg-hover: #ac135a;
+    --color-negative-bg-pressed: #78013a;
+    --color-negative-bg-brand: #ff2b83;
+    --color-negative-border-default: #cc2269;
+    --color-negative-icon-default: #cc2269;
+    --color-negative-icon-hover: #ac135a;
+    --color-negative-icon-pressed: #78013a;
+    --color-negative-icon-brand: #ff2b83;
+    --color-negative-icon-error: #78013a;
+    --color-negative-data-graph: #ffaacd;
+    --color-negative-data-primary: #cc2269;
+    --color-negative-data-secondary: #ff2b83;
+    --color-negative-data-tertiary: #ffaacd;
+    --color-negative-data-quaternary: #ffd5e6;
+    --color-negative-data-quinary: #78013a;
+    
+    /* ===== ERROR COLORS ===== */
+    --color-error-bg-default: #ff4733;
+    --color-error-bg-weak: #ffecea;
+    --color-error-bg-medium: #cc3929;
+    --color-error-bg-hover: #cc3929;
+    --color-error-bg-pressed: #992b1f;
+    
+    /* ===== WARNING COLORS ===== */
+    --color-warning-bg-default: #e6bb00;
+    --color-warning-bg-weak: #fffae5;
+    --color-warning-bg-medium: #fff3bd;
+    --color-warning-bg-strong: #ffcf00;
+    --color-warning-border-default: #e6bb00;
+    --color-warning-icon-default: #e6bb00;
+    --color-warning-icon-medium: #c49f00;
+    --color-warning-icon-strong: #ffcf00;
+    
+    /* ===== ACCENT COLORS ===== */
+    --color-accent-bg-default: #009087;
+    --color-accent-bg-weak: #e5fdfc;
+    --color-accent-bg-strong: #00605a;
+    --color-accent-bg-brand: #00f0e1;
+    --color-accent-bg-brand-hover: #99f9f3;
+    --color-accent-bg-brand-pressed: #ccfcf9;
+    --color-accent-icon-default: #009087;
+    --color-accent-icon-brand: #00f0e1;
+    
+    /* ===== GRAPH COLORS ===== */
+    --color-graph-positive: #41a21a;
+    --color-graph-negative: #cc2269;
+    --color-graph-neutral: #ffffff;
+    --color-graph-main: #336bff;
+    --color-graph-first: #e6bb00;
+    --color-graph-second: #cc2269;
+    --color-graph-third: #41a21a;
+    --color-graph-fourth: #d2f500;
+    --color-graph-fifth: #00605a;
+    --color-graph-sixth: #cc3929;
+    --color-graph-seventh: #00c8f5;
+    --color-graph-eighth: #bdbdbd;
+    --color-graph-volume: #e0e0e0;
+    --color-graph-volume-hover: #bdbdbd;
+    --color-graph-crosshair: #bdbdbd;
+    
+    /* Technical Analysis Colors */
+    --color-graph-ta-plot-bands: #eeeeee;
+    --color-graph-ta-primary-line: #336bff;
+    --color-graph-ta-secondary-line: #cc2269;
+    --color-graph-ta-primary-bar: #adc4ff;
+    --color-graph-ta-secondary-bar: #ffaacd;
+    --color-graph-ta-single-line: #000000;
+    
+    /* ===== PREMIUM BADGE COLORS ===== */
+    --color-premium-badge-gold: #e0c276;
+    --color-premium-badge-platinum: #6e6e6e;
+    --color-premium-badge-black: #1c1c1c;
+    --color-premium-badge-signature: #1196a9;
+    
+    /* ===== GOLD COLORS ===== */
+    --color-gold-500: #e0c276;
+    --color-gold-600: #c3a760;
+    --color-gold-700: #a68c4b;
+    --color-gold-800: #897239;
+    
+    /* ===== SHADOW SYSTEM ===== */
+    /* Low Shadow */
+    --shadow-low-blur-a: 2px;
+    --shadow-low-blur-b: 20px;
+    --shadow-low-color-a: #00000014;
+    --shadow-low-color-b: #0000000a;
+    
+    /* Medium Shadow */
+    --shadow-medium-blur-a: 2px;
+    --shadow-medium-blur-b: 20px;
+    --shadow-medium-color-a: #0000001f;
+    --shadow-medium-color-b: #0000000f;
+    
+    /* Typography Scale - Font Sizes */
+    --font-size-h1: 40px;
+    --font-size-h2: 32px;
+    --font-size-h3: 28px;
+    --font-size-subtitle1: 24px;
+    --font-size-subtitle2: 20px;
+    --font-size-primary: 16px;
+    --font-size-secondary: 14px;
+    --font-size-tertiary: 12px;
+    --font-size-graph: 10px;
+    
+    /* Typography Scale - Line Heights */
+    --line-height-h1: 48px;
+    --line-height-h2: 40px;
+    --line-height-h3: 32px;
+    --line-height-subtitle1: 28px;
+    --line-height-subtitle2: 24px;
+    --line-height-primary: 24px;
+    --line-height-secondary: 20px;
+    --line-height-tertiary: 16px;
+    --line-height-graph: 14px;
+    
+    /* ===== SHADOW SYSTEM (Updated from Figma) ===== */
+    /* Low Shadow */
+    --shadow-low: 0px 0px 2px 0px var(--shadow-low-color-a), 0px 0px 20px 0px var(--shadow-low-color-b);
+    
+    /* Medium Shadow */
+    --shadow-medium: 0px 0px 2px 0px var(--shadow-medium-color-a), 0px 0px 20px 0px var(--shadow-medium-color-b);
+    
+    /* High Shadow (legacy) */
+    --shadow-high: 0px 0px 8px 0px rgba(0,0,0,0.12), 0px 0px 24px 0px rgba(0,0,0,0.08);
+    
+    /* ===== BADGE COLORS (Updated from Figma) ===== */
+    /* Development Badges */
+    --§badge-positive: #41a21a;      /* positive/default */
+    --badge-positive-text: #ffffff;
+    --badge-negative: #cc2269;      /* negative/default */
+    --badge-negative-text: #ffffff;
+    --badge-cta: #1c1c1c;          /* neutral/text/default */
+    --badge-cta-text: #ffffff;
+    
+    /* Status Badges */
+    --badge-success: #41a21a;       /* positive/default */
+    --badge-success-text: #ffffff;
+    --badge-pending: #e6bb00;       /* warning/default */
+    --badge-pending-text: #1c1c1c;
+    --badge-error: #ff4733;         /* error/default */
+    --badge-error-text: #ffffff;
+    --badge-warning: #e6bb00;       /* warning/default */
+    --badge-warning-text: #1c1c1c;
+    --badge-info: #009087;          /* accent/default */
+    --badge-info-text: #ffffff;
+    --badge-quit: #f5f5f5;          /* neutral/background/medium */
+    --badge-quit-text: #1c1c1c;
+    
+    /* Input Colors */
+    --color-primary: #1c1c1c;
+    --color-border-default: #bdbdbd;
+    --color-border-hover: #9e9e9e;
+    --color-border-disabled: #e0e0e0;
+    --color-bg-disabled: #f5f5f5;
+    --color-text-disabled: #9e9e9e;
+    --color-error: #ff4d6b;
+    --color-success: #00c853;
+    --color-bg-hover: #f0f0f0;
+    
+    /* Badge Sizes - Icon Badges */
+    --badge-size-xl: 80px;
+    --badge-size-l: 48px;
+    --badge-size-m: 40px;
+    --badge-size-s: 32px;
+    
+    /* Badge Sizes - Development Badges (Circular) */
+    --badge-dev-size-l: 40px;
+    --badge-dev-size-m: 24px;
+    --badge-dev-size-s: 16px;
+    
+    /* Button Colors - From Figma Design */
+    --button-primary-bg: #1c1c1c;
+    --button-primary-text: #ffffff;
+    --button-primary-hover-bg: #2a2a2a;
+    --button-primary-pressed-bg: #0f0f0f;
+    
+    --button-sell-bg: #ff4d6b;
+    --button-sell-text: #ffffff;
+    --button-sell-hover-bg: #ff6b7d;
+    --button-sell-pressed-bg: #e63e5a;
+    
+    --button-secondary-bg: #f5f5f5;
+    --button-secondary-text: #1c1c1c;
+    --button-secondary-hover-bg: #e8e8e8;
+    --button-secondary-pressed-bg: #d9d9d9;
+    
+    --button-tertiary-bg: transparent;
+    --button-tertiary-text: #148097;
+    --button-tertiary-hover-bg: rgba(20, 128, 151, 0.1);
+    --button-tertiary-pressed-bg: rgba(20, 128, 151, 0.2);
+    
+    --button-disabled-bg: #eeeeee;
+    --button-disabled-text: #9e9e9e;
+    
+    /* Button Sizes */
+    --button-height-small: 32px;
+    --button-height-default: 40px;
+    --button-height-large: 48px;
+    
+    /* Button Padding */
+    --button-padding-small: 6px 12px;
+    --button-padding-default: 8px 16px;
+    --button-padding-large: 12px 20px;
+    
+    /* Button Font Sizes */
+    --button-font-small: 14px;
+    --button-font-default: 16px;
+    --button-font-large: 16px;
+    
+    /* Button Line Heights */
+    --button-line-small: 20px;
+    --button-line-default: 24px;
+    --button-line-large: 24px;
+    
+    /* Progress Bar Colors */
+    --progress-bg: #f5f5f5;
+    --progress-fill: #1c1c1c;
+    --progress-height: 4px;
+    --progress-border-radius: 100px;
+    
+    /* Dark Mode Colors */
+    --dark-bg-default: #1c1c1c;
+    --dark-bg-neutral: #2a2a2a;
+    --dark-text-default: #ffffff;
+    --dark-text-weak: #b3b3b3;
+    --dark-progress-bg: #404040;
+    --dark-progress-fill: #ffffff;
+}
+
+/* ===================================
+   2. BASE TYPOGRAPHY STYLES
+   =================================== */
+
+/* Headline Styles */
+.typography-h1,
+h1.typography {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-h1);
+    line-height: var(--line-height-h1);
+    font-weight: var(--font-weight-extrabold);
+    color: var(--color-text-default);
+}
+
+.typography-h2,
+h2.typography {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-h2);
+    line-height: var(--line-height-h2);
+    font-weight: var(--font-weight-extrabold);
+    color: var(--color-text-default);
+}
+
+.typography-h2-bold {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-h2);
+    line-height: var(--line-height-h2);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-default);
+}
+
+.typography-h3,
+h3.typography {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-h3);
+    line-height: var(--line-height-h3);
+    font-weight: var(--font-weight-extrabold);
+    color: var(--color-text-default);
+}
+
+.typography-h3-bold {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-h3);
+    line-height: var(--line-height-h3);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-default);
+}
+
+/* Subtitle Styles */
+.typography-subtitle1,
+.subtitle1 {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-subtitle1);
+    line-height: var(--line-height-subtitle1);
+    font-weight: var(--font-weight-extrabold);
+    color: var(--color-text-default);
+}
+
+.typography-subtitle1-bold {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-subtitle1);
+    line-height: var(--line-height-subtitle1);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-default);
+}
+
+.typography-subtitle2,
+.subtitle2 {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-subtitle2);
+    line-height: var(--line-height-subtitle2);
+    font-weight: var(--font-weight-extrabold);
+    color: var(--color-text-default);
+}
+
+.typography-subtitle2-bold {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-subtitle2);
+    line-height: var(--line-height-subtitle2);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-default);
+}
+
+/* Body Text Styles */
+.typography-primary,
+.body-primary {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-primary);
+    line-height: var(--line-height-primary);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-text-default);
+}
+
+.typography-primary-bold {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-primary);
+    line-height: var(--line-height-primary);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-default);
+}
+
+.typography-primary-extrabold {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-primary);
+    line-height: var(--line-height-primary);
+    font-weight: var(--font-weight-extrabold);
+    color: var(--color-text-default);
+}
+
+.typography-secondary,
+.body-secondary {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-secondary);
+    line-height: var(--line-height-secondary);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-text-default);
+}
+
+.typography-secondary-bold {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-secondary);
+    line-height: var(--line-height-secondary);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-default);
+}
+
+.typography-secondary-extrabold {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-secondary);
+    line-height: var(--line-height-secondary);
+    font-weight: var(--font-weight-extrabold);
+    color: var(--color-text-default);
+}
+
+.typography-tertiary,
+.body-tertiary {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-tertiary);
+    line-height: var(--line-height-tertiary);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-text-default);
+}
+
+.typography-tertiary-bold {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-tertiary);
+    line-height: var(--line-height-tertiary);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-default);
+}
+
+.typography-tertiary-extrabold {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-tertiary);
+    line-height: var(--line-height-tertiary);
+    font-weight: var(--font-weight-extrabold);
+    color: var(--color-text-default);
+}
+
+/* Graph/Small Text Styles */
+.typography-graph,
+.text-graph {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-graph);
+    line-height: var(--line-height-graph);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-text-default);
+}
+
+.typography-graph-bold {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-graph);
+    line-height: var(--line-height-graph);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-default);
+}
+
+.typography-graph-extrabold {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-graph);
+    line-height: var(--line-height-graph);
+    font-weight: var(--font-weight-extrabold);
+    color: var(--color-text-default);
+}
+
+/* ===================================
+   3. UTILITY CLASSES
+   =================================== */
+
+/* Text Color Utilities */
+.text-default {
+    color: var(--color-text-default);
+}
+
+.text-weak {
+    color: var(--color-text-weak);
+}
+
+/* Font Weight Utilities */
+.font-regular {
+    font-weight: var(--font-weight-regular);
+}
+
+.font-bold {
+    font-weight: var(--font-weight-bold);
+}
+
+.font-extrabold {
+    font-weight: var(--font-weight-extrabold);
+}
+
+/* Background Utilities */
+.bg-default {
+    background-color: var(--color-bg-default);
+}
+
+.bg-neutral {
+    background-color: var(--color-bg-neutral);
+}
+
+/* Shadow Utilities */
+.shadow-low {
+    box-shadow: var(--shadow-low);
+}
+
+.shadow-medium {
+    box-shadow: var(--shadow-medium);
+}
+
+.shadow-high {
+    box-shadow: var(--shadow-high);
+}
+
+/* ===================================
+   4. RESPONSIVE TYPOGRAPHY
+   =================================== */
+
+@media (max-width: 640px) {
+    :root {
+        /* Slightly adjusted for mobile if needed */
+        --font-size-h1: 32px;
+        --line-height-h1: 40px;
+        --font-size-h2: 28px;
+        --line-height-h2: 32px;
+    }
+}
+
+/* ===================================
+   5. DEFAULT HTML ELEMENT STYLES
+   =================================== */
+
+body {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-primary);
+    line-height: var(--line-height-primary);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-text-default);
+    background-color: var(--color-bg-default);
+}
+
+h1 {
+    font-size: var(--font-size-h1);
+    line-height: var(--line-height-h1);
+    font-weight: var(--font-weight-extrabold);
+}
+
+h2 {
+    font-size: var(--font-size-h2);
+    line-height: var(--line-height-h2);
+    font-weight: var(--font-weight-extrabold);
+}
+
+h3 {
+    font-size: var(--font-size-h3);
+    line-height: var(--line-height-h3);
+    font-weight: var(--font-weight-extrabold);
+}
+
+p {
+    font-size: var(--font-size-primary);
+    line-height: var(--line-height-primary);
+}
+
+/* ===================================
+   6. COMPONENT-SPECIFIC STYLES
+   =================================== */
+
+/* Card Titles */
+.card-title {
+    font-size: var(--font-size-secondary);
+    line-height: var(--line-height-secondary);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-default);
+}
+
+/* Card Descriptions */
+.card-description {
+    font-size: var(--font-size-tertiary);
+    line-height: var(--line-height-tertiary);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-text-weak);
+}
+
+/* Button Text */
+.button-text {
+    font-size: var(--font-size-primary);
+    line-height: var(--line-height-primary);
+    font-weight: var(--font-weight-bold);
+}
+
+/* Label Text */
+.label-text {
+    font-size: var(--font-size-tertiary);
+    line-height: var(--line-height-tertiary);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-weak);
+}
+
+/* ===================================
+   7. BADGE COMPONENTS
+   =================================== */
+
+/* Base Badge Styles */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-family-primary);
+    font-weight: var(--font-weight-bold);
+    border-radius: 50%;
+    transition: transform 0.2s ease;
+}
+
+/* Development Badges (Circular with icons) */
+.badge-dev {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100px; /* Fully rounded like Figma */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Development Badge Sizes */
+.badge-dev-l {
+    width: var(--badge-dev-size-l);
+    height: var(--badge-dev-size-l);
+}
+
+.badge-dev-m {
+    width: var(--badge-dev-size-m);
+    height: var(--badge-dev-size-m);
+}
+
+.badge-dev-s {
+    width: var(--badge-dev-size-s);
+    height: var(--badge-dev-size-s);
+}
+
+/* Badge Icon Container */
+.badge-icon {
+    position: absolute;
+    inset: 25%; /* 1/4 inset like in Figma */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Badge Icon Sizes */
+.badge-dev-l .badge-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.badge-dev-m .badge-icon {
+    width: 12px;
+    height: 12px;
+}
+
+.badge-dev-s .badge-icon {
+    width: 8px;
+    height: 8px;
+}
+
+/* Development Badge Variants */
+.badge-positive {
+    background-color: var(--badge-positive);
+    color: var(--badge-positive-text);
+}
+
+.badge-negative {
+    background-color: var(--badge-negative);
+    color: var(--badge-negative-text);
+}
+
+.badge-cta {
+    background-color: var(--badge-cta);
+    color: var(--badge-cta-text);
+}
+
+/* Icon Badge Sizes (Circular) */
+.badge-xl {
+    width: var(--badge-size-xl);
+    height: var(--badge-size-xl);
+    font-size: 32px;
+}
+
+.badge-l {
+    width: var(--badge-size-l);
+    height: var(--badge-size-l);
+    font-size: 20px;
+}
+
+.badge-m {
+    width: var(--badge-size-m);
+    height: var(--badge-size-m);
+    font-size: 16px;
+}
+
+.badge-s {
+    width: var(--badge-size-s);
+    height: var(--badge-size-s);
+    font-size: 14px;
+}
+
+/* Status Badge Variants */
+.badge-success {
+    background-color: var(--badge-success);
+    color: var(--badge-success-text);
+}
+
+.badge-pending {
+    background-color: var(--badge-pending);
+    color: var(--badge-pending-text);
+}
+
+.badge-error {
+    background-color: var(--badge-error);
+    color: var(--badge-error-text);
+}
+
+.badge-warning {
+    background-color: var(--badge-warning);
+    color: var(--badge-warning-text);
+}
+
+.badge-info {
+    background-color: var(--badge-info);
+    color: var(--badge-info-text);
+}
+
+.badge-quit {
+    background-color: var(--badge-quit);
+    color: var(--badge-quit-text);
+}
+
+/* Status Badge Icon Styles */
+.badge-status-icon {
+    width: 50%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Badge Hover Effects */
+.badge:hover,
+.badge-dev:hover {
+    transform: scale(1.05);
+}
+
+/* Badge with Border (for light backgrounds on dark) */
+.badge-bordered {
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ===================================
+   8. BUTTON COMPONENTS
+   =================================== */
+
+/* Base Button Styles */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: var(--font-family-primary);
+    font-weight: var(--font-weight-bold);
+    border: none;
+    border-radius: 100px; /* Fully rounded like Figma */
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
+/* Button Sizes */
+.btn-small {
+    height: var(--button-height-small);
+    padding: var(--button-padding-small);
+    font-size: var(--button-font-small);
+    line-height: var(--button-line-small);
+    gap: 6px;
+}
+
+.btn-default {
+    height: var(--button-height-default);
+    padding: var(--button-padding-default);
+    font-size: var(--button-font-default);
+    line-height: var(--button-line-default);
+    gap: 8px;
+}
+
+.btn-large {
+    height: var(--button-height-large);
+    padding: var(--button-padding-large);
+    font-size: var(--button-font-large);
+    line-height: var(--button-line-large);
+    gap: 8px;
+}
+
+/* Button Types */
+.btn-primary {
+    background-color: var(--button-primary-bg);
+    color: var(--button-primary-text);
+}
+
+.btn-primary:hover:not(:disabled) {
+    background-color: var(--button-primary-hover-bg);
+}
+
+.btn-primary:active:not(:disabled) {
+    background-color: var(--button-primary-pressed-bg);
+}
+
+.btn-sell {
+    background-color: var(--button-sell-bg);
+    color: var(--button-sell-text);
+}
+
+.btn-sell:hover:not(:disabled) {
+    background-color: var(--button-sell-hover-bg);
+}
+
+.btn-sell:active:not(:disabled) {
+    background-color: var(--button-sell-pressed-bg);
+}
+
+.btn-secondary {
+    background-color: var(--button-secondary-bg);
+    color: var(--button-secondary-text);
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background-color: var(--button-secondary-hover-bg);
+}
+
+.btn-secondary:active:not(:disabled) {
+    background-color: var(--button-secondary-pressed-bg);
+}
+
+.btn-tertiary {
+    background-color: var(--button-tertiary-bg);
+    color: var(--button-tertiary-text);
+}
+
+.btn-tertiary:hover:not(:disabled) {
+    background-color: var(--button-tertiary-hover-bg);
+}
+
+.btn-tertiary:active:not(:disabled) {
+    background-color: var(--button-tertiary-pressed-bg);
+}
+
+.btn-disabled {
+    background-color: var(--button-disabled-bg);
+    color: var(--button-disabled-text);
+    cursor: not-allowed;
+}
+
+.btn:disabled {
+    background-color: var(--button-disabled-bg);
+    color: var(--button-disabled-text);
+    cursor: not-allowed;
+}
+
+/* Button Icon Styles */
+.btn-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.btn-small .btn-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.btn-default .btn-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.btn-large .btn-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Button Loading State */
+.btn-loading {
+    position: relative;
+    pointer-events: none;
+}
+
+.btn-loading::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border: 2px solid transparent;
+    border-top: 2px solid currentColor;
+    border-radius: 50%;
+    animation: button-spin 1s linear infinite;
+}
+
+@keyframes button-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Button Focus States */
+.btn:focus-visible {
+    outline: 2px solid var(--button-primary-bg);
+    outline-offset: 2px;
+}
+
+.btn-secondary:focus-visible,
+.btn-tertiary:focus-visible {
+    outline: 2px solid var(--button-tertiary-text);
+    outline-offset: 2px;
+}
+
+/* Icon Button Styles */
+.btn-icon-only {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-family-primary);
+    border: none;
+    border-radius: 50%; /* Fully circular like Figma design */
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    white-space: nowrap;
+    box-sizing: border-box;
+    background-color: var(--button-secondary-bg);
+    color: var(--button-secondary-text);
+    /* Size and padding will be set by size classes */
+}
+
+/* Icon Button Sizes - Matching Figma Specifications */
+.btn-icon-only.btn-icon-xs {
+    width: 24px;
+    height: 24px;
+    padding: 4px;
+}
+
+.btn-icon-only.btn-icon-small {
+    width: 28px;
+    height: 28px;
+    padding: 5px;
+}
+
+.btn-icon-only.btn-icon-medium {
+    width: 32px;
+    height: 32px;
+    padding: 6px;
+}
+
+.btn-icon-only.btn-icon-default {
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+}
+
+.btn-icon-only.btn-icon-large {
+    width: 48px;
+    height: 48px;
+    padding: 10px;
+}
+
+/* Default size when no size class is specified */
+.btn-icon-only:not(.btn-icon-xs):not(.btn-icon-small):not(.btn-icon-medium):not(.btn-icon-default):not(.btn-icon-large) {
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+}
+
+/* Icon Button Hover States */
+.btn-icon-only:hover:not(:disabled) {
+    background-color: var(--button-secondary-hover-bg);
+}
+
+.btn-icon-only:active:not(:disabled) {
+    background-color: var(--button-secondary-pressed-bg);
+}
+
+/* Icon Button Disabled State */
+.btn-icon-only:disabled {
+    background-color: var(--button-disabled-bg);
+    color: var(--button-disabled-text);
+    cursor: not-allowed;
+}
+
+/* Icon Button Focus States */
+.btn-icon-only:focus-visible {
+    outline: 2px solid var(--button-secondary-text);
+    outline-offset: 2px;
+}
+
+/* Icon Button Icon Styles */
+.btn-icon-only .btn-icon {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.btn-icon-only.btn-icon-xs .btn-icon {
+    width: 12px;
+    height: 12px;
+}
+
+.btn-icon-only.btn-icon-small .btn-icon {
+    width: 14px;
+    height: 14px;
+}
+
+.btn-icon-only.btn-icon-medium .btn-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.btn-icon-only.btn-icon-large .btn-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* ===================================
+   9. PROGRESS BAR COMPONENTS
+   =================================== */
+
+/* Progress Bar Container */
+.progress-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+/* Individual Progress Step */
+.progress-step {
+    flex: 1;
+    height: var(--progress-height);
+    background-color: var(--progress-bg);
+    border-radius: var(--progress-border-radius);
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.3s ease; /* smooth fill change */
+}
+
+/* Filled Progress Step */
+.progress-step.progress-filled {
+    background-color: var(--progress-fill);
+}
+
+/* Progress Step with Partial Fill */
+.progress-step.progress-partial {
+    background-color: var(--progress-bg);
+}
+
+.progress-step.progress-partial::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: var(--progress-fill);
+    width: var(--progress-partial-width, 0%);
+    border-radius: var(--progress-border-radius);
+    transition: width 0.3s ease; /* smooth partial width motion */
+}
+
+/* Show once ready */
+.progress-container.progress-ready {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Progress Step Sizes */
+.progress-step.progress-small {
+    height: 2px;
+}
+
+.progress-step.progress-default {
+    height: var(--progress-height);
+}
+
+.progress-step.progress-large {
+    height: 6px;
+}
+
+/* Progress Bar with Icon Buttons */
+.progress-bar-with-controls {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    padding: 12px;
+}
+
+.progress-bar-with-controls .progress-container {
+    flex: 1;
+    gap: 8px;
+}
+
+/* ===================================
+   10. INPUT COMPONENTS (FROM FIGMA)
+   =================================== */
+
+/* Input Container */
+.input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+    position: relative;
+}
+
+/* Input Wrapper - Contains the actual input field */
+.input-wrapper {
+    position: relative;
+    background-color: var(--color-bg-medium);
+    border-radius: 8px;
+    padding: 10px 12px;
+    height: 56px;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    transition: border-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    cursor: text;
+}
+
+/* Input Field Container */
+.input-field {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Floating Label - Starts centered, moves up when active */
+.input-field-label {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: var(--font-size-secondary);
+    line-height: var(--line-height-secondary);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-text-weak);
+    transition: all 0.2s ease;
+    pointer-events: none;
+    background-color: transparent;
+}
+
+/* Label moves up when input is focused or has value */
+.input-field input:focus ~ .input-field-label,
+.input-field input:not(:placeholder-shown) ~ .input-field-label,
+.input-wrapper.has-value .input-field-label {
+    top: 0;
+    transform: translateY(0);
+    font-size: var(--font-size-tertiary);
+    line-height: var(--line-height-tertiary);
+}
+
+/* Actual input element styling */
+.input-field input {
+    width: 100%;
+    border: none;
+    background: transparent;
+    outline: none;
+    padding: 0;
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-secondary);
+    line-height: var(--line-height-secondary);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-text-default);
+    position: relative;
+    z-index: 1;
+    margin-top: 0;
+}
+
+/* Push input down when label is active - no transition for instant cursor appearance */
+.input-field input:focus,
+.input-field input:not(:placeholder-shown),
+.input-wrapper.has-value .input-field input {
+    margin-top: 16px;
+}
+
+.input-field input::placeholder {
+    color: transparent;
+}
+
+.input-field input:disabled {
+    color: var(--color-text-disabled);
+    cursor: not-allowed;
+}
+
+/* Input Suffix (e.g., currency) */
+.input-suffix {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: var(--font-size-secondary);
+    line-height: var(--line-height-secondary);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-default);
+    white-space: nowrap;
+    pointer-events: none;
+    transition: transform 0.2s ease;
+}
+
+/* Move suffix down when label is active to align with input */
+.input-field input:focus ~ .input-suffix,
+.input-field input:not(:placeholder-shown) ~ .input-suffix,
+.input-wrapper.has-value .input-field .input-suffix {
+    transform: translateY(calc(-50% + 8px));
+}
+
+/* Adjust input padding when suffix is present */
+.input-field:has(.input-suffix) input {
+    padding-right: 40px;
+}
+
+/* Input States */
+.input-wrapper:hover:not(.input-disabled):not(.has-value) {
+    border: 1px solid var(--color-border-medium);
+}
+
+/* Active/Typing state - only when actively focused/typing */
+.input-wrapper:focus-within:not(.input-disabled) {
+    border: 1px solid var(--color-border-default);
+}
+
+.input-wrapper.input-disabled {
+    cursor: not-allowed;
+}
+
+.input-wrapper.input-error {
+    border-color: var(--color-negative-border-default);
+}
+
+.input-wrapper.input-success {
+    border-color: transparent;
+}
+
+.input-wrapper.input-disabled {
+    background-color: var(--color-bg-disabled);
+    cursor: not-allowed;
+}
+
+.input-wrapper.input-disabled .input-field-label,
+.input-wrapper.input-disabled .input-field-value {
+    color: var(--color-text-disabled);
+}
+
+/* Helper Text Container */
+.input-helper {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: var(--font-size-tertiary);
+    line-height: var(--line-height-tertiary);
+    font-weight: var(--font-weight-regular);
+}
+
+.input-helper-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+.input-helper-text {
+    color: var(--color-text-default);
+}
+
+.input-helper.input-helper-error .input-helper-text {
+    color: var(--color-negative-text-default);
+}
+
+.input-helper.input-helper-success .input-helper-text {
+    color: var(--color-text-default);
+}
+
+/* Error Icon SVG */
+.input-error-icon {
+    width: 16px;
+    height: 16px;
+}
+
+/* Success Icon SVG */
+.input-success-icon {
+    width: 16px;
+    height: 16px;
+}
+
+/* ===========================
+   ACCOUNT BADGE INPUT VARIANT
+   =========================== */
+
+/* Modified input wrapper for badge variant */
+.input-wrapper.input-wrapper-badge {
+    padding-left: 52px;
+    padding-right: 52px;
+    position: relative;
+}
+
+/* Account Badge - circular avatar inside input wrapper on the left */
+.input-account-badge {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: var(--color-bg-badge);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: var(--font-size-graph);
+    line-height: var(--line-height-graph);
+    font-weight: var(--font-weight-extrabold);
+    color: var(--color-text-strong);
+    text-transform: uppercase;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+/* Action Button - circular button on the right inside input wrapper */
+.input-action-button {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.2s ease;
+    z-index: 2;
+    padding: 0;
+    color: var(--color-icon-default);
+}
+
+.input-action-button:hover {
+    background-color: var(--color-bg-hover);
+}
+
+.input-action-button:active {
+    background-color: var(--color-bg-medium);
+}
+
+.input-action-button svg,
+.input-action-button .icon {
+    width: 16px;
+    height: 16px;
+    color: var(--color-icon-default);
+}
+
+/* Expanded state - blue icon button */
+.input-action-button.expanded {
+    background-color: var(--color-bg-active);
+}
+
+.input-action-button.expanded svg,
+.input-action-button.expanded .icon {
+    color: var(--color-action-icon-default);
+}
+
+/* Emoji Picker Container */
+.emoji-picker {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background: var(--color-bg-default);
+    border: 1px solid var(--color-border-medium);
+    border-radius: 8px;
+    padding: 8px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.12), 0px 0px 20px rgba(0, 0, 0, 0.06);
+    display: none;
+    z-index: 100;
+    min-width: 200px;
+}
+
+.emoji-picker.show {
+    display: block !important;
+}
+
+/* Emoji Grid */
+.emoji-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4px;
+}
+
+.emoji-item {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    border: none;
+    background: transparent;
+    padding: 0;
+    transition: background-color 0.15s ease;
+}
+
+.emoji-item:hover {
+    background-color: var(--color-bg-medium);
+}
+
+.emoji-item:active {
+    background-color: var(--color-bg-active);
+}
+
+/* Emoji in input value */
+.input-emoji {
+    display: inline-block;
+    margin-left: 4px;
+}
+
+/* Dark Mode Input Styles */
+[data-theme="dark"] .input-wrapper {
+    background-color: var(--dark-bg-neutral);
+    border-color: transparent;
+}
+
+[data-theme="dark"] .input-wrapper:hover:not(.input-disabled) {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] .input-wrapper:focus-within:not(.input-disabled) {
+    border-color: var(--dark-text-default);
+}
+
+[data-theme="dark"] .input-field-label {
+    color: var(--dark-text-weak);
+}
+
+[data-theme="dark"] .input-field-value {
+    color: var(--dark-text-default);
+}
+
+[data-theme="dark"] .input-suffix {
+    color: var(--dark-text-default);
+}
+
+[data-theme="dark"] .input-wrapper.input-disabled {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .input-helper-text {
+    color: var(--dark-text-default);
+}
+
+/* ===================================
+   11. CARD COMPONENTS (FROM FIGMA)
+   =================================== */
+
+/* Base Card Styles - Selectable Card with Badge */
+.card-selectable {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    background-color: var(--color-bg-default);
+    border: 1px solid transparent;
+    border-radius: 8px;
+    box-shadow: var(--shadow-medium);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    width: 100%;
+    max-width: 424px;
+    box-sizing: border-box;
+}
+
+/* Card Badge - Circular avatar on the left */
+.card-badge {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: var(--color-bg-badge);
+    border: 0px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: var(--font-size-tertiary);
+    line-height: var(--line-height-tertiary);
+    font-weight: var(--font-weight-extrabold);
+    color: var(--color-text-strong);
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+}
+
+/* Card Content - Text container */
+.card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+/* Card Title */
+.card-selectable-title {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-primary);
+    line-height: var(--line-height-primary);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-default);
+}
+
+/* Card Description */
+.card-selectable-description {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-tertiary);
+    line-height: var(--line-height-tertiary);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-text-weak);
+}
+
+/* Card Radio Button - Custom radio on the right */
+.card-radio {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid var(--color-border-default);
+    background-color: var(--color-bg-default);
+    flex-shrink: 0;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+/* Radio checkmark */
+.card-radio-check {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    display: none;
+}
+
+/* Card States */
+
+/* Hover State */
+.card-selectable:hover:not(.card-disabled) {
+    border: 1px solid var(--color-border-weak);
+    box-shadow: var(--shadow-medium);
+}
+
+/* Focus State */
+.card-selectable:focus:not(.card-disabled),
+.card-selectable.card-focus:not(.card-disabled) {
+    border-color: var(--color-border-default);
+    outline: 2px solid var(--color-border-default);
+    outline-offset: 2px;
+}
+
+/* Selected State */
+.card-selectable.card-selected:not(.card-disabled) {
+    border: 1px solid transparent;
+}
+
+.card-selectable.card-selected:not(.card-disabled) .card-radio {
+    border-color: var(--color-action-border-default);
+    background-color: var(--color-action-bg-default);
+}
+
+.card-selectable.card-selected:not(.card-disabled) .card-radio-check {
+    display: block;
+}
+
+/* Selected Hover State */
+.card-selectable.card-selected:hover:not(.card-disabled) {
+    border: 1px solid var(--color-border-weak);
+    box-shadow: var(--shadow-medium);
+}
+
+.card-selectable.card-selected:hover:not(.card-disabled) .card-radio {
+    border-color: var(--color-action-border-hover);
+    background-color: var(--color-action-bg-hover);
+}
+
+/* Selected Focus State */
+.card-selectable.card-selected:focus:not(.card-disabled),
+.card-selectable.card-selected.card-focus:not(.card-disabled) {
+    border-color: var(--color-action-border-default);
+    outline: 2px solid var(--color-action-border-focus);
+    outline-offset: 2px;
+}
+
+/* Error State */
+.card-selectable.card-error:not(.card-disabled) {
+    border-color: var(--color-negative-border-default);
+}
+
+.card-selectable.card-error:not(.card-disabled) .card-radio {
+    border-color: var(--color-negative-border-default);
+}
+
+.card-selectable.card-error:hover:not(.card-disabled) {
+    border-color: var(--color-negative-icon-hover);
+}
+
+/* Disabled State */
+.card-selectable.card-disabled {
+    cursor: not-allowed;
+    opacity: 1;
+    border-color: var(--color-border-disabled);
+    background-color: var(--color-bg-default);
+}
+
+.card-selectable.card-disabled .card-badge {
+    background-color: var(--color-bg-disabled);
+    color: var(--color-text-disabled);
+}
+
+.card-selectable.card-disabled .card-selectable-title {
+    color: var(--color-text-disabled);
+}
+
+.card-selectable.card-disabled .card-selectable-description {
+    color: var(--color-text-disabled);
+}
+
+.card-selectable.card-disabled .card-radio {
+    border-color: var(--color-border-disabled);
+    background-color: var(--color-bg-disabled);
+}
+
+/* Selected Disabled State */
+.card-selectable.card-selected.card-disabled .card-radio {
+    background-color: var(--color-bg-disabled);
+    border-color: var(--color-border-disabled);
+}
+
+.card-selectable.card-selected.card-disabled .card-radio-check {
+    display: block;
+    opacity: 0.5;
+}
+
+/* Dark Mode Card Styles */
+[data-theme="dark"] .card-selectable {
+    background-color: var(--dark-bg-default);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] .card-selectable:hover:not(.card-disabled) {
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+[data-theme="dark"] .card-selectable .card-selectable-title {
+    color: var(--dark-text-default);
+}
+
+[data-theme="dark"] .card-selectable .card-selectable-description {
+    color: var(--dark-text-weak);
+}
+
+/* ===================================
+   12. DARK MODE SUPPORT
+   =================================== */
+
+/* Dark Mode Root Variables */
+[data-theme="dark"] {
+    --color-bg-default: var(--dark-bg-default);
+    --color-bg-neutral: var(--dark-bg-neutral);
+    --color-text-default: var(--dark-text-default);
+    --color-text-weak: var(--dark-text-weak);
+    --progress-bg: var(--dark-progress-bg);
+    --progress-fill: var(--dark-progress-fill);
+}
+
+/* Dark Mode Body */
+[data-theme="dark"] body {
+    background-color: var(--dark-bg-default);
+    color: var(--dark-text-default);
+}
+
+/* Dark Mode Icon Buttons */
+[data-theme="dark"] .btn-icon-only {
+    background-color: var(--dark-bg-neutral);
+    color: var(--dark-text-default);
+}
+
+[data-theme="dark"] .btn-icon-only:hover:not(:disabled) {
+    background-color: #404040;
+}
+
+[data-theme="dark"] .btn-icon-only:active:not(:disabled) {
+    background-color: #333333;
+}
+
+[data-theme="dark"] .btn-icon-only:focus-visible {
+    outline: 2px solid var(--dark-text-default);
+    outline-offset: 2px;
+}
+
+/* Dark Mode Progress Bar */
+[data-theme="dark"] .progress-step {
+    background-color: var(--dark-progress-bg);
+}
+
+[data-theme="dark"] .progress-step.progress-filled {
+    background-color: var(--dark-progress-fill);
+}
+
+[data-theme="dark"] .progress-step.progress-partial::after {
+    background-color: var(--dark-progress-fill);
+}
+
+/* Dark Mode Progress Bar Container */
+/* No specific dark mode styles needed for progress-bar-with-controls */
+
+/* Dark Mode Cards */
+[data-theme="dark"] .card {
+    background-color: var(--dark-bg-neutral);
+    color: var(--dark-text-default);
+}
+
+/* Dark Mode Typography */
+[data-theme="dark"] .typography-h1,
+[data-theme="dark"] .typography-h2,
+[data-theme="dark"] .typography-h3,
+[data-theme="dark"] .typography-subtitle1,
+[data-theme="dark"] .typography-subtitle2,
+[data-theme="dark"] .typography-primary,
+[data-theme="dark"] .typography-secondary,
+[data-theme="dark"] .typography-tertiary {
+    color: var(--dark-text-default);
+}
+
+[data-theme="dark"] .text-weak {
+    color: var(--dark-text-weak);
+}
+
+[data-theme="dark"] .card-title {
+    color: var(--dark-text-default);
+}
+
+[data-theme="dark"] .card-description {
+    color: var(--dark-text-weak);
+}
+
+[data-theme="dark"] .label-text {
+    color: var(--dark-text-weak);
+}
+
+/* ===================================
+   8. LABEL COMPONENTS
+   =================================== */
+
+/* Base Label Styles */
+.label {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: var(--font-family-primary);
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+
+/* Label Sizes */
+.label-small {
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 700;
+    padding: 4px;
+}
+
+.label-medium {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 700;
+    padding: 2px 8px;
+}
+
+/* Label Variants - Based on Figma Design Tokens */
+.label-default {
+    background-color: #f5f5f5;
+    color: #1c1c1c;
+}
+
+.label-action {
+    background-color: #eaf0ff;
+    color: #336bff;
+}
+
+.label-positive {
+    background-color: #edfae8;
+    color: #41a21a;
+}
+
+.label-negative {
+    background-color: #f6e7ee;
+    color: #cc2269;
+}
+
+.label-warning {
+    background-color: #fff3bd;
+    color: #614f00;
+}
+
+.label-accent {
+    background-color: #e5fdfc;
+    color: #009087;
+}
+
+.label-neutral {
+    background-color: #eeeeee;
+    color: #9e9e9e;
+}
+
+/* Dark Theme Label Variants */
+.label-dark {
+    background-color: #1c1c1c;
+    color: #ffffff;
+}
+
+.label-dark-action {
+    background-color: #336bff;
+    color: #ffffff;
+}
+
+.label-dark-positive {
+    background-color: #41a21a;
+    color: #ffffff;
+}
+
+.label-dark-negative {
+    background-color: #cc2269;
+    color: #ffffff;
+}
+
+.label-dark-warning {
+    background-color: #614f00;
+    color: #ffffff;
+}
+
+.label-dark-accent {
+    background-color: #009087;
+    color: #ffffff;
+}
+
+/* Label Focus States for Accessibility */
+.label:focus {
+    outline: 2px solid #336bff;
+   
+}
+
+/* ===================================
+   13. DROPDOWN COMPONENTS (FROM FIGMA)
+   =================================== */
+
+/* Dropdown Container */
+.dropdown-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+    position: relative;
+}
+
+/* Dropdown Wrapper - Contains the actual dropdown field */
+.dropdown-wrapper {
+    position: relative;
+    background-color: var(--color-bg-medium);
+    border-radius: 8px;
+    padding: 10px 12px;
+    height: 56px;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    transition: border-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* Dropdown Field Container */
+.dropdown-field {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Floating Label - Starts centered, moves up when active */
+.dropdown-field-label {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: var(--font-size-secondary);
+    line-height: var(--line-height-secondary);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-text-weak);
+    transition: all 0.2s ease;
+    pointer-events: none;
+    background-color: transparent;
+}
+
+/* Label moves up when dropdown has value */
+.dropdown-wrapper.has-value .dropdown-field-label {
+    top: 0;
+    transform: translateY(0);
+    font-size: var(--font-size-tertiary);
+    line-height: var(--line-height-tertiary);
+}
+
+/* Selected value display */
+.dropdown-field-value {
+    width: 100%;
+    border: none;
+    background: transparent;
+    outline: none;
+    padding: 0;
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-secondary);
+    line-height: var(--line-height-secondary);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-text-default);
+    position: relative;
+    z-index: 1;
+    margin-top: 0;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Push value down when label is active */
+.dropdown-wrapper.has-value .dropdown-field-value {
+    margin-top: 16px;
+}
+
+.dropdown-field-value:empty::before {
+    content: attr(data-placeholder);
+    color: transparent;
+}
+
+/* Dropdown Arrow Icon */
+.dropdown-arrow {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    color: var(--color-icon-default);
+    transition: transform 0.2s ease;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Rotate arrow when open */
+.dropdown-wrapper.dropdown-open .dropdown-arrow {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+/* Move arrow down when label is active to align with value */
+.dropdown-wrapper.has-value .dropdown-arrow {
+    transform: translateY(calc(-50% + 8px));
+}
+
+.dropdown-wrapper.has-value.dropdown-open .dropdown-arrow {
+    transform: translateY(calc(-50% + 8px)) rotate(180deg);
+}
+
+/* Dropdown States */
+.dropdown-wrapper:hover:not(.dropdown-disabled):not(.has-value) {
+    border: 1px solid var(--color-border-medium);
+}
+
+/* Active/Open state */
+.dropdown-wrapper.dropdown-open:not(.dropdown-disabled) {
+    border: 1px solid var(--color-border-default);
+}
+
+.dropdown-wrapper.dropdown-disabled {
+    cursor: not-allowed;
+    background-color: var(--color-bg-disabled);
+}
+
+.dropdown-wrapper.dropdown-error {
+    border-color: var(--color-negative-border-default);
+}
+
+.dropdown-wrapper.dropdown-success {
+    border-color: transparent;
+}
+
+.dropdown-wrapper.dropdown-disabled .dropdown-field-label,
+.dropdown-wrapper.dropdown-disabled .dropdown-field-value {
+    color: var(--color-text-disabled);
+}
+
+.dropdown-wrapper.dropdown-disabled .dropdown-arrow {
+    color: var(--color-icon-disabled);
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    background: var(--color-bg-default);
+    border: 1px solid var(--color-border-medium);
+    border-radius: 8px;
+    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.12), 0px 0px 24px 0px rgba(0,0,0,0.08);
+    max-height: 280px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+    padding: 8px;
+}
+
+.dropdown-menu.dropdown-menu-open {
+    display: block;
+}
+
+/* Dropdown Menu Item */
+.dropdown-menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-secondary);
+    line-height: var(--line-height-secondary);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-text-default);
+    gap: 12px;
+}
+
+.dropdown-menu-item:hover {
+    background-color: var(--color-bg-medium);
+}
+
+.dropdown-menu-item.dropdown-item-selected {
+    color: var(--color-action-text-default);
+}
+
+/* Dropdown Item Check/Radio Icon */
+.dropdown-item-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dropdown-item-icon svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Radio button style for single select */
+.dropdown-radio {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid var(--color-border-default);
+    background-color: transparent;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.dropdown-menu-item.dropdown-item-selected .dropdown-radio {
+    border-color: var(--color-action-border-default);
+    background-color: var(--color-action-bg-default);
+}
+
+.dropdown-radio-check {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: white;
+    display: none;
+}
+
+.dropdown-menu-item.dropdown-item-selected .dropdown-radio-check {
+    display: block;
+}
+
+/* Checkbox style for multi-select */
+.dropdown-checkbox {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    border: 2px solid var(--color-border-default);
+    background-color: transparent;
+    position: relative;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dropdown-menu-item.dropdown-item-selected .dropdown-checkbox {
+    border-color: var(--color-action-border-default);
+    background-color: var(--color-action-bg-default);
+}
+
+.dropdown-checkbox-check {
+    display: none;
+    color: white;
+}
+
+.dropdown-menu-item.dropdown-item-selected .dropdown-checkbox-check {
+    display: block;
+}
+
+/* Helper Text Container */
+.dropdown-helper {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: var(--font-size-tertiary);
+    line-height: var(--line-height-tertiary);
+    font-weight: var(--font-weight-regular);
+}
+
+.dropdown-helper-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+.dropdown-helper-text {
+    color: var(--color-text-default);
+}
+
+.dropdown-helper.dropdown-helper-error .dropdown-helper-text {
+    color: var(--color-negative-text-default);
+}
+
+.dropdown-helper.dropdown-helper-success .dropdown-helper-text {
+    color: var(--color-text-default);
+}
+
+/* Dark Mode Dropdown Styles */
+[data-theme="dark"] .dropdown-wrapper {
+    background-color: var(--dark-bg-neutral);
+    border-color: transparent;
+}
+
+[data-theme="dark"] .dropdown-wrapper:hover:not(.dropdown-disabled) {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] .dropdown-wrapper.dropdown-open:not(.dropdown-disabled) {
+    border-color: var(--dark-text-default);
+}
+
+[data-theme="dark"] .dropdown-field-label {
+    color: var(--dark-text-weak);
+}
+
+[data-theme="dark"] .dropdown-field-value {
+    color: var(--dark-text-default);
+}
+
+[data-theme="dark"] .dropdown-wrapper.dropdown-disabled {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .dropdown-helper-text {
+    color: var(--dark-text-default);
+}
+
+[data-theme="dark"] .dropdown-menu {
+    background-color: var(--dark-bg-neutral);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] .dropdown-menu-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ===================================
+   14. DISABLE FOCUS STATES
+   =================================== */
+
+/* Disable all focus states globally */
+*:focus,
+*:focus-visible,
+*:focus-within {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Disable focus states for specific components */
+.btn:focus,
+.btn:focus-visible,
+.btn:focus-within {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.btn-icon-only:focus,
+.btn-icon-only:focus-visible,
+.btn-icon-only:focus-within {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.input-wrapper:focus,
+.input-wrapper:focus-visible,
+.input-wrapper:focus-within {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.input-field input:focus,
+.input-field input:focus-visible,
+.input-field input:focus-within {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.card-selectable:focus,
+.card-selectable:focus-visible,
+.card-selectable:focus-within {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.label:focus,
+.label:focus-visible,
+.label:focus-within {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Disable focus states for all interactive elements */
+button:focus,
+button:focus-visible,
+button:focus-within,
+input:focus,
+input:focus-visible,
+input:focus-within,
+select:focus,
+select:focus-visible,
+select:focus-within,
+textarea:focus,
+textarea:focus-visible,
+textarea:focus-within,
+a:focus,
+a:focus-visible,
+a:focus-within {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
