@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../design-system/design-system.css">
     <script src="js/progress-stable.js"></script>
     <script src="js/smooth-transitions.js"></script>
+    <script src="js/form-validation.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -57,7 +58,7 @@
         <!-- Progress Header -->
         <div class="progress-bar-with-controls">
             <!-- Back Button -->
-            <button class="btn-icon-only btn-icon-default" onclick="window.location.href='account-alias.html'">
+            <button class="btn-icon-only btn-icon-medium" onclick="window.location.href='account-alias.html'">
                 <div class="btn-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
@@ -74,7 +75,7 @@
             </div>
             
             <!-- Close Button -->
-            <button class="btn-icon-only btn-icon-default">
+            <button class="btn-icon-only btn-icon-medium">
                 <div class="btn-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
@@ -82,11 +83,6 @@
                 </div>
             </button>
         </div>
-        
-        <!-- Apply progress immediately after bar is rendered -->
-        <script>
-            if (window.__applyProgress__) window.__applyProgress__();
-        </script>
 
         <!-- Main Content -->
         <div class="flex-1 px-4 py-6 flex flex-col">
@@ -122,45 +118,31 @@
                     </div>
                 </div>
 
-                <!-- Nationality Dropdown -->
+                <!-- Salutation Dropdown -->
                 <div class="dropdown-container">
-                    <div class="dropdown-wrapper" id="nationality-dropdown">
+                    <div class="dropdown-wrapper" id="salutation-dropdown">
                         <div class="dropdown-field">
-                            <span class="dropdown-field-label">Nationality</span>
+                            <span class="dropdown-field-label">Salutation (optional)</span>
                             <div class="dropdown-field-value"></div>
                             <div class="dropdown-arrow">
-                                <svg viewBox="0 0 8 8" fill="none">
-                                    <path d="M1 3L4 6L7 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
+                                <img src="../Asset/Chevron.svg" alt="Dropdown arrow" class="w-2 h-2">
                             </div>
                         </div>
                         <div class="dropdown-menu">
-                            <div class="dropdown-menu-item" data-value="de">
-                                <span>Germany</span>
+                            <div class="dropdown-menu-item" data-value="mr">
+                                <span>Mr</span>
                                 <div class="dropdown-radio">
                                     <div class="dropdown-radio-check"></div>
                                 </div>
                             </div>
-                            <div class="dropdown-menu-item" data-value="se">
-                                <span>Sweden</span>
+                            <div class="dropdown-menu-item" data-value="mrs">
+                                <span>Mrs</span>
                                 <div class="dropdown-radio">
                                     <div class="dropdown-radio-check"></div>
                                 </div>
                             </div>
-                            <div class="dropdown-menu-item" data-value="dk">
-                                <span>Denmark</span>
-                                <div class="dropdown-radio">
-                                    <div class="dropdown-radio-check"></div>
-                                </div>
-                            </div>
-                            <div class="dropdown-menu-item" data-value="no">
-                                <span>Norway</span>
-                                <div class="dropdown-radio">
-                                    <div class="dropdown-radio-check"></div>
-                                </div>
-                            </div>
-                            <div class="dropdown-menu-item" data-value="fi">
-                                <span>Finland</span>
+                            <div class="dropdown-menu-item" data-value="neutral">
+                                <span>Neutral</span>
                                 <div class="dropdown-radio">
                                     <div class="dropdown-radio-check"></div>
                                 </div>
@@ -169,45 +151,31 @@
                     </div>
                 </div>
 
-                <!-- Country of Residence Dropdown -->
+                <!-- Title Dropdown -->
                 <div class="dropdown-container">
-                    <div class="dropdown-wrapper" id="country-dropdown">
+                    <div class="dropdown-wrapper" id="title-dropdown">
                         <div class="dropdown-field">
-                            <span class="dropdown-field-label">Country of residence</span>
+                            <span class="dropdown-field-label">Title (optional)</span>
                             <div class="dropdown-field-value"></div>
                             <div class="dropdown-arrow">
-                                <svg viewBox="0 0 8 8" fill="none">
-                                    <path d="M1 3L4 6L7 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
+                                <img src="../Asset/Chevron.svg" alt="Dropdown arrow" class="w-2 h-2">
                             </div>
                         </div>
                         <div class="dropdown-menu">
-                            <div class="dropdown-menu-item" data-value="de">
-                                <span>Germany</span>
+                            <div class="dropdown-menu-item" data-value="dr">
+                                <span>Dr</span>
                                 <div class="dropdown-radio">
                                     <div class="dropdown-radio-check"></div>
                                 </div>
                             </div>
-                            <div class="dropdown-menu-item" data-value="se">
-                                <span>Sweden</span>
+                            <div class="dropdown-menu-item" data-value="prof">
+                                <span>Prof</span>
                                 <div class="dropdown-radio">
                                     <div class="dropdown-radio-check"></div>
                                 </div>
                             </div>
-                            <div class="dropdown-menu-item" data-value="dk">
-                                <span>Denmark</span>
-                                <div class="dropdown-radio">
-                                    <div class="dropdown-radio-check"></div>
-                                </div>
-                            </div>
-                            <div class="dropdown-menu-item" data-value="no">
-                                <span>Norway</span>
-                                <div class="dropdown-radio">
-                                    <div class="dropdown-radio-check"></div>
-                                </div>
-                            </div>
-                            <div class="dropdown-menu-item" data-value="fi">
-                                <span>Finland</span>
+                            <div class="dropdown-menu-item" data-value="no-title">
+                                <span>No title</span>
                                 <div class="dropdown-radio">
                                     <div class="dropdown-radio-check"></div>
                                 </div>
@@ -220,9 +188,9 @@
 
         <!-- Bottom Section -->
         <div class="px-4 py-4" style="background-color: var(--color-bg-default);">
-            <a href="contact-info.html" class="btn btn-primary btn-large w-full">
+            <button class="btn btn-primary btn-large w-full" id="continue-btn">
                 Continue
-            </a>
+            </button>
         </div>
 
         <!-- Home Indicator -->
@@ -245,9 +213,13 @@
                 const input = wrapper.querySelector('input');
                 if (!input) return;
                 
+                // Cache DOM elements to avoid repeated queries
+                const inputField = wrapper.querySelector('.input-field');
+                const inputLabel = wrapper.querySelector('.input-field-label');
+                
                 // Make wrapper clickable to focus input
                 wrapper.addEventListener('click', (e) => {
-                    if (e.target === wrapper || e.target === wrapper.querySelector('.input-field') || e.target === wrapper.querySelector('.input-field-label')) {
+                    if (e.target === wrapper || e.target === inputField || e.target === inputLabel) {
                         input.focus();
                     }
                 });
@@ -270,7 +242,9 @@
 
         // Initialize dropdown functionality
         function initializeDropdowns() {
-            document.querySelectorAll('.dropdown-wrapper').forEach(dropdown => {
+            const allDropdowns = document.querySelectorAll('.dropdown-wrapper');
+            
+            allDropdowns.forEach(dropdown => {
                 const menu = dropdown.querySelector('.dropdown-menu');
                 const valueDisplay = dropdown.querySelector('.dropdown-field-value');
                 const items = dropdown.querySelectorAll('.dropdown-menu-item');
@@ -282,8 +256,8 @@
                     // Don't toggle if clicking on a menu item
                     if (e.target.closest('.dropdown-menu-item')) return;
 
-                    // Close other dropdowns
-                    document.querySelectorAll('.dropdown-wrapper').forEach(d => {
+                    // Close other dropdowns - use cached list
+                    allDropdowns.forEach(d => {
                         if (d !== dropdown) {
                             d.classList.remove('dropdown-open');
                             d.querySelector('.dropdown-menu')?.classList.remove('dropdown-menu-open');
@@ -319,6 +293,9 @@
                             valueDisplay.textContent = item.querySelector('span').textContent;
                             dropdown.classList.add('has-value');
                             
+                            // Dispatch custom event for form validation
+                            dropdown.dispatchEvent(new CustomEvent('dropdown-change'));
+                            
                             // Close dropdown after selection
                             dropdown.classList.remove('dropdown-open');
                             menu.classList.remove('dropdown-menu-open');
@@ -327,10 +304,10 @@
                 });
             });
 
-            // Close dropdowns when clicking outside
+            // Close dropdowns when clicking outside - use cached list
             document.addEventListener('click', (e) => {
                 if (!e.target.closest('.dropdown-wrapper')) {
-                    document.querySelectorAll('.dropdown-wrapper').forEach(dropdown => {
+                    allDropdowns.forEach(dropdown => {
                         dropdown.classList.remove('dropdown-open');
                         dropdown.querySelector('.dropdown-menu')?.classList.remove('dropdown-menu-open');
                     });
@@ -338,15 +315,32 @@
             });
         }
 
-        // Initialize on DOM ready
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => {
-                initializeInputs();
-                initializeDropdowns();
-            });
-        } else {
+        // Initialize form validation - disabled, button always enabled
+        function initializeFormValidation() {
+            // No form validation - button is always enabled
+        }
+
+        // Initialize on DOM ready - single initialization
+        function initializePage() {
             initializeInputs();
             initializeDropdowns();
+            initializeFormValidation();
+            
+            // Add click handler for continue button
+            const continueBtn = document.getElementById('continue-btn');
+            if (continueBtn) {
+                continueBtn.addEventListener('click', () => {
+                    if (!continueBtn.disabled) {
+                        window.location.href = 'birth-details.html';
+                    }
+                });
+            }
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializePage);
+        } else {
+            initializePage();
         }
     </script>
 </body>

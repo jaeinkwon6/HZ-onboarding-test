@@ -42,7 +42,7 @@
         <!-- Progress Header -->
         <div class="progress-bar-with-controls">
             <!-- Back Button -->
-            <button class="btn-icon-only btn-icon-default" onclick="window.location.href='contact-info.html'">
+            <button class="btn-icon-only btn-icon-medium" onclick="window.location.href='contact-info.html'">
                 <div class="btn-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
@@ -59,7 +59,7 @@
             </div>
             
             <!-- Close Button -->
-            <button class="btn-icon-only btn-icon-default" onclick="window.location.href='index.html'">
+            <button class="btn-icon-only btn-icon-medium" onclick="window.location.href='index.html'">
                 <div class="btn-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
@@ -85,20 +85,38 @@
                 </p>
             </div>
 
-            <!-- Search Input -->
+            <!-- Address Autocomplete Search -->
             <div class="flex-1">
-                <div class="bg-neutral-100 box-border flex gap-2 h-14 items-center px-3 py-3.5 rounded-lg w-full">
-                    <svg class="w-4 h-4 shrink-0" style="color: var(--color-text-weak);" viewBox="0 0 16 16" fill="none">
-                        <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5"/>
-                        <path d="M11.5 11.5L14.5 14.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                    </svg>
-                    <input 
-                        type="text" 
-                        placeholder="Enter a street address"
-                        class="flex-1 bg-transparent border-none outline-none text-sm"
-                        style="color: var(--color-text-default);"
-                        id="address-input"
-                    />
+                <div class="autocomplete-container">
+                    <div class="autocomplete-wrapper" id="address-autocomplete">
+                        <svg class="autocomplete-search-icon" viewBox="0 0 16 16" fill="none">
+                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                            <path d="M11 11l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                        <div class="autocomplete-field">
+                            <input type="text" placeholder=" " id="address-input" autocomplete="off">
+                            <label class="autocomplete-label">Enter a street address</label>
+                        </div>
+                        <div class="autocomplete-spinner" id="address-spinner" style="display: none;">
+                            <svg viewBox="0 0 16 16" fill="none">
+                                <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="2" fill="none" stroke-dasharray="31.416" stroke-dashoffset="31.416">
+                                    <animate attributeName="stroke-dasharray" dur="1s" values="0 31.416;15.708 15.708;0 31.416" repeatCount="indefinite"/>
+                                    <animate attributeName="stroke-dashoffset" dur="1s" values="0;-15.708;-31.416" repeatCount="indefinite"/>
+                                </circle>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="autocomplete-dropdown" id="address-dropdown">
+                        <!-- Search results will be populated here -->
+                    </div>
+                    <div class="autocomplete-helper" id="address-helper" style="display: none;">
+                        <svg class="autocomplete-helper-icon" viewBox="0 0 16 16" fill="none">
+                            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M8 4v4.5" stroke="currentColor" stroke-width="1.5"/>
+                            <circle cx="8" cy="11" r="0.5" fill="currentColor"/>
+                        </svg>
+                        <span class="autocomplete-helper-text">Please enter a valid address</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -125,25 +143,221 @@
     </a>
 
     <script>
-        // Enable continue button when address is entered
-        const addressInput = document.getElementById('address-input');
-        const continueBtn = document.getElementById('continue-btn');
-        
-        addressInput.addEventListener('input', function() {
-            if (this.value.trim().length > 0) {
-                continueBtn.disabled = false;
-                continueBtn.style.backgroundColor = '';
-                continueBtn.style.color = '';
-                continueBtn.onclick = function() {
-                    window.location.href = 'us-tax-liability.html';
-                };
-            } else {
-                continueBtn.disabled = true;
-                continueBtn.style.backgroundColor = '#eeeeee';
-                continueBtn.style.color = '#9e9e9e';
-                continueBtn.onclick = null;
+        // Sample German addresses data (in a real app, this would come from an API)
+        const germanAddresses = [
+            'Friedrichstraße 98, 10115 Berlin',
+            'Friedrichstraße 102, 10115 Berlin',
+            'Friedrichstraße 121, 10115 Berlin',
+            'Friedrichstraße 192, 10115 Berlin',
+            'Friedrichstraße 244, 10115 Berlin',
+            'Unter den Linden 1, 10117 Berlin',
+            'Potsdamer Platz 1, 10785 Berlin',
+            'Alexanderplatz 1, 10178 Berlin',
+            'Kurfürstendamm 26, 10719 Berlin',
+            'Hackescher Markt 1, 10178 Berlin',
+            'Marienplatz 1, 80331 München',
+            'Maximilianstraße 1, 80539 München',
+            'Leopoldstraße 1, 80802 München',
+            'Sendlinger Straße 1, 80331 München',
+            'Kaufingerstraße 1, 80331 München',
+            'Hauptbahnhof 1, 80335 München',
+            'Rathausplatz 1, 80331 München',
+            'Viktualienmarkt 1, 80331 München',
+            'Hamburger Straße 1, 20095 Hamburg',
+            'Reeperbahn 1, 20359 Hamburg',
+            'Jungfernstieg 1, 20354 Hamburg',
+            'Speicherstadt 1, 20457 Hamburg',
+            'Landungsbrücken 1, 20459 Hamburg',
+            'Alster 1, 20099 Hamburg',
+            'HafenCity 1, 20457 Hamburg',
+            'Köln Hauptbahnhof, 50667 Köln',
+            'Domplatz 1, 50667 Köln',
+            'Hohe Straße 1, 50667 Köln',
+            'Schildergasse 1, 50667 Köln',
+            'Neumarkt 1, 50667 Köln'
+        ];
+
+        // Initialize autocomplete functionality
+        function initializeAddressAutocomplete() {
+            const autocompleteWrapper = document.getElementById('address-autocomplete');
+            const input = document.getElementById('address-input');
+            const dropdown = document.getElementById('address-dropdown');
+            const spinner = document.getElementById('address-spinner');
+            const helper = document.getElementById('address-helper');
+            const continueBtn = document.getElementById('continue-btn');
+            
+            let searchTimeout;
+            let isOpen = false;
+
+            // Make wrapper clickable to focus input
+            autocompleteWrapper.addEventListener('click', (e) => {
+                if (e.target === autocompleteWrapper || e.target === autocompleteWrapper.querySelector('.autocomplete-field') || e.target === autocompleteWrapper.querySelector('.autocomplete-label')) {
+                    input.focus();
+                }
+            });
+
+            // Handle input changes
+            input.addEventListener('input', (e) => {
+                const value = e.target.value.trim();
+                
+                // Update has-value class for floating label
+                if (value) {
+                    autocompleteWrapper.classList.add('has-value');
+                } else {
+                    autocompleteWrapper.classList.remove('has-value');
+                }
+
+                // Update continue button state
+                updateContinueButton(value);
+
+                // Clear previous timeout
+                clearTimeout(searchTimeout);
+                
+                // Hide dropdown and helper if empty
+                if (!value) {
+                    hideDropdown();
+                    hideHelper();
+                    return;
+                }
+
+                // Show loading spinner
+                showSpinner();
+
+                // Simulate API delay
+                searchTimeout = setTimeout(() => {
+                    performSearch(value);
+                }, 300);
+            });
+
+            // Handle input focus
+            input.addEventListener('focus', () => {
+                const value = input.value.trim();
+                if (value) {
+                    performSearch(value);
+                }
+            });
+
+            // Handle input blur (with delay to allow clicking on dropdown items)
+            input.addEventListener('blur', () => {
+                setTimeout(() => {
+                    hideDropdown();
+                }, 200);
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!autocompleteWrapper.contains(e.target)) {
+                    hideDropdown();
+                }
+            });
+
+            function performSearch(query) {
+                hideSpinner();
+                
+                // Filter addresses based on query
+                const results = germanAddresses.filter(address => 
+                    address.toLowerCase().includes(query.toLowerCase())
+                );
+
+                if (results.length > 0) {
+                    showDropdown(results, query);
+                    hideHelper();
+                } else {
+                    hideDropdown();
+                    showHelper('Can\'t find your address? <a href="#" class="autocomplete-manual-link">Fill it in manually</a>');
+                }
             }
-        });
+
+            function showDropdown(results, query) {
+                dropdown.innerHTML = '';
+                
+                results.forEach((address, index) => {
+                    const item = document.createElement('div');
+                    item.className = 'autocomplete-item';
+                    item.innerHTML = `
+                        <svg class="autocomplete-item-icon" viewBox="0 0 16 16" fill="none">
+                            <path d="M8 2C5.79 2 4 3.79 4 6C4 9.5 8 13 8 13S12 9.5 12 6C12 3.79 10.21 2 8 2ZM8 7.5C7.17 7.5 6.5 6.83 6.5 6S7.17 4.5 8 4.5S9.5 5.17 9.5 6S8.83 7.5 8 7.5Z" fill="currentColor"/>
+                        </svg>
+                        <span class="autocomplete-item-text">${highlightText(address, query)}</span>
+                    `;
+                    
+                    item.addEventListener('click', () => {
+                        selectAddress(address);
+                    });
+                    
+                    dropdown.appendChild(item);
+                });
+                
+                dropdown.classList.add('open');
+                isOpen = true;
+            }
+
+            function hideDropdown() {
+                dropdown.classList.remove('open');
+                isOpen = false;
+            }
+
+            function selectAddress(address) {
+                input.value = address;
+                autocompleteWrapper.classList.add('has-value');
+                hideDropdown();
+                hideHelper();
+                updateContinueButton(address);
+            }
+
+            function highlightText(text, query) {
+                if (!query) return text;
+                const regex = new RegExp(`(${query})`, 'gi');
+                return text.replace(regex, '<span class="autocomplete-item-highlight">$1</span>');
+            }
+
+            function showSpinner() {
+                spinner.style.display = 'block';
+            }
+
+            function hideSpinner() {
+                spinner.style.display = 'none';
+            }
+
+            function showHelper(message) {
+                helper.innerHTML = `
+                    <svg class="autocomplete-helper-icon" viewBox="0 0 16 16" fill="none">
+                        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M8 4v4.5" stroke="currentColor" stroke-width="1.5"/>
+                        <circle cx="8" cy="11" r="0.5" fill="currentColor"/>
+                    </svg>
+                    <span class="autocomplete-helper-text">${message}</span>
+                `;
+                helper.style.display = 'flex';
+            }
+
+            function hideHelper() {
+                helper.style.display = 'none';
+            }
+
+            function updateContinueButton(value) {
+                if (value && value.trim().length > 0) {
+                    continueBtn.disabled = false;
+                    continueBtn.style.backgroundColor = '';
+                    continueBtn.style.color = '';
+                    continueBtn.onclick = function() {
+                        window.location.href = 'us-tax-liability.html';
+                    };
+                } else {
+                    continueBtn.disabled = true;
+                    continueBtn.style.backgroundColor = '#eeeeee';
+                    continueBtn.style.color = '#9e9e9e';
+                    continueBtn.onclick = null;
+                }
+            }
+        }
+
+        // Initialize on DOM ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeAddressAutocomplete);
+        } else {
+            initializeAddressAutocomplete();
+        }
     </script>
 </body>
 </html>

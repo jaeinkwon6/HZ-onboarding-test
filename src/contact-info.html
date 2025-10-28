@@ -13,11 +13,11 @@
         /* Phone input with country code */
         .phone-input-wrapper {
             display: flex;
-            gap: 0;
+            gap: 12px;
         }
         
         .phone-country-code {
-            width: 81px;
+            width: 80px;
             flex-shrink: 0;
         }
         
@@ -28,7 +28,7 @@
         .phone-country-code .input-field {
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
-            border-right: 1px solid var(--color-border-medium);
+            border-right: none;
         }
         
         .phone-number-field .input-field {
@@ -41,26 +41,96 @@
             align-items: center;
             gap: 4px;
             padding: 18px 12px;
+            height: 100%;
+            width: 100%;
+            justify-content: center;
         }
         
-        .flag-emoji {
+        .flag-image {
             width: 16px;
             height: 16px;
-            font-size: 16px;
-            line-height: 16px;
+            object-fit: contain;
+            flex-shrink: 0;
         }
         
         .country-code-text {
-            font-size: 16px;
+            font-family: var(--font-family-primary);
+            font-size: 14px;
             line-height: 20px;
-            font-weight: 400;
+            font-weight: 700;
             color: var(--color-text-default);
+            white-space: nowrap;
         }
         
         .chevron-down {
             width: 8px;
             height: 8px;
             color: var(--color-icon-default);
+            flex-shrink: 0;
+        }
+        
+        .country-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .country-option .flag-image {
+            width: 16px;
+            height: 16px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+        
+        .country-option span {
+            font-family: var(--font-family-primary);
+            font-size: 14px;
+            line-height: 20px;
+            font-weight: 400;
+            color: var(--color-text-default);
+        }
+        
+        /* Remove radio button styling for country dropdown */
+        .phone-country-code .dropdown-menu-item {
+            justify-content: flex-start;
+        }
+        
+        .phone-country-code .dropdown-menu-item .dropdown-radio {
+            display: none;
+        }
+        
+        /* Show all country code dropdown items without scrolling */
+        .phone-country-code .dropdown-menu {
+            max-height: none;
+            overflow-y: visible;
+            min-width: 150px;
+            width: 150px;
+            position: fixed;
+            z-index: 9999;
+        }
+        
+        /* Make country code dropdown items wider to cover content */
+        .phone-country-code .dropdown-menu-item {
+            min-width: 120px;
+            width: 100%;
+        }
+        
+        /* Ensure dropdown container has proper positioning context */
+        .phone-country-code .dropdown-container {
+            position: relative;
+        }
+        
+        /* Allow dropdown to overflow parent containers */
+        .phone-country-code {
+            overflow: visible;
+        }
+        
+        .phone-input-wrapper {
+            overflow: visible;
+        }
+        
+        .input-container {
+            overflow: visible;
         }
     </style>
     <script>
@@ -111,7 +181,7 @@
         <!-- Progress Header -->
         <div class="progress-bar-with-controls">
             <!-- Back Button -->
-            <button class="btn-icon-only btn-icon-default" onclick="window.location.href='birth-details.html'">
+            <button class="btn-icon-only btn-icon-medium" onclick="window.location.href='birth-details.html'">
                 <div class="btn-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
@@ -128,7 +198,7 @@
             </div>
             
             <!-- Close Button -->
-            <button class="btn-icon-only btn-icon-default">
+            <button class="btn-icon-only btn-icon-medium">
                 <div class="btn-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
@@ -161,14 +231,51 @@
                     <div class="phone-input-wrapper">
                         <!-- Country Code -->
                         <div class="phone-country-code">
-                            <div class="input-wrapper">
-                                <div class="input-field" style="cursor: pointer;">
-                                    <div class="country-code-content">
-                                        <span class="flag-emoji">🇩🇪</span>
-                                        <span class="country-code-text">+49</span>
-                                        <svg class="chevron-down" viewBox="0 0 8 8" fill="none">
-                                            <path d="M1 3L4 6L7 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
+                            <div class="dropdown-container">
+                                <div class="dropdown-wrapper" id="country-code-dropdown">
+                                    <div class="dropdown-field">
+                                        <div class="country-code-content">
+                                            <img src="../Asset/Germany.png" alt="Germany" class="flag-image" id="country-flag">
+                                            <span class="country-code-text" id="country-code-text">+49</span>
+                                            <img src="../Asset/Chevron.svg" alt="Dropdown arrow" class="chevron-down">
+                                        </div>
+                                    </div>
+                                    <div class="dropdown-menu">
+                                        <div class="dropdown-menu-item" data-value="de" data-flag="../Asset/Germany.png" data-code="+49">
+                                            <div class="country-option">
+                                                <img src="../Asset/Germany.png" alt="Germany" class="flag-image">
+                                                <span>+49</span>
+                                            </div>
+                                        </div>
+                                        <div class="dropdown-menu-item" data-value="se" data-flag="../Asset/Sweden.svg" data-code="+46">
+                                            <div class="country-option">
+                                                <img src="../Asset/Sweden.svg" alt="Sweden" class="flag-image">
+                                                <span>+46</span>
+                                            </div>
+                                        </div>
+                                        <div class="dropdown-menu-item" data-value="dk" data-flag="../Asset/Denmark.svg" data-code="+45">
+                                            <div class="country-option">
+                                                <img src="../Asset/Denmark.svg" alt="Denmark" class="flag-image">
+                                                <span>+45</span>
+                                            </div>
+                                        </div>
+                                        <div class="dropdown-menu-item" data-value="no" data-flag="../Asset/Norway.svg" data-code="+47">
+                                            <div class="country-option">
+                                                <img src="../Asset/Norway.svg" alt="Norway" class="flag-image">
+                                                <span>+47</span>
+                                            </div>
+                                        </div>
+                                        <div class="dropdown-menu-item" data-value="fi" data-flag="../Asset/Finland.svg" data-code="+358">
+                                            <div class="country-option">
+                                                <img src="../Asset/Finland.svg" alt="Finland" class="flag-image">
+                                                <span>+358</span>
+                                            </div>
+                                        </div>
+                                        <div class="dropdown-menu-item" data-value="custom" data-flag="" data-code="">
+                                            <div class="country-option">
+                                                <span>+</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -248,11 +355,101 @@
             });
         }
 
+        // Initialize country code dropdown
+        function initializeCountryCodeDropdown() {
+            const dropdown = document.getElementById('country-code-dropdown');
+            const menu = dropdown.querySelector('.dropdown-menu');
+            const items = dropdown.querySelectorAll('.dropdown-menu-item');
+            const flagImage = document.getElementById('country-flag');
+            const codeText = document.getElementById('country-code-text');
+
+            // Toggle dropdown
+            dropdown.addEventListener('click', (e) => {
+                if (dropdown.classList.contains('dropdown-disabled')) return;
+                
+                // Don't toggle if clicking on a menu item
+                if (e.target.closest('.dropdown-menu-item')) return;
+
+                // Close other dropdowns
+                document.querySelectorAll('.dropdown-wrapper').forEach(d => {
+                    if (d !== dropdown) {
+                        d.classList.remove('dropdown-open');
+                        d.querySelector('.dropdown-menu')?.classList.remove('dropdown-menu-open');
+                    }
+                });
+
+                // Toggle current dropdown
+                dropdown.classList.toggle('dropdown-open');
+                menu.classList.toggle('dropdown-menu-open');
+                
+                // Position the dropdown menu correctly
+                if (menu.classList.contains('dropdown-menu-open')) {
+                    const rect = dropdown.getBoundingClientRect();
+                    menu.style.position = 'fixed';
+                    menu.style.top = (rect.bottom + 4) + 'px';
+                    menu.style.left = rect.left + 'px';
+                    menu.style.width = '150px';
+                }
+            });
+
+            // Handle item selection
+            items.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    
+                    // Clear others and select this
+                    items.forEach(i => i.classList.remove('dropdown-item-selected'));
+                    item.classList.add('dropdown-item-selected');
+                    
+                    const flag = item.getAttribute('data-flag');
+                    const code = item.getAttribute('data-code');
+                    const value = item.getAttribute('data-value');
+                    
+                    if (value === 'custom') {
+                        // Handle custom country selection - allow free form input
+                        flagImage.src = ''; // No flag for custom
+                        flagImage.style.display = 'none';
+                        codeText.textContent = '+';
+                        
+                        // Focus the phone number input for direct typing
+                        const phoneInput = document.getElementById('phone-input');
+                        if (phoneInput) {
+                            phoneInput.focus();
+                            phoneInput.placeholder = 'Enter full phone number with country code';
+                        }
+                    } else {
+                        // Update flag and code
+                        if (flag) {
+                            flagImage.src = flag;
+                            flagImage.style.display = 'block';
+                        }
+                        codeText.textContent = code;
+                    }
+                    
+                    // Close dropdown after selection
+                    dropdown.classList.remove('dropdown-open');
+                    menu.classList.remove('dropdown-menu-open');
+                });
+            });
+
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.dropdown-wrapper')) {
+                    dropdown.classList.remove('dropdown-open');
+                    menu.classList.remove('dropdown-menu-open');
+                }
+            });
+        }
+
         // Initialize on DOM ready
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initializeInputs);
+            document.addEventListener('DOMContentLoaded', () => {
+                initializeInputs();
+                initializeCountryCodeDropdown();
+            });
         } else {
             initializeInputs();
+            initializeCountryCodeDropdown();
         }
     </script>
 </body>

@@ -39,7 +39,7 @@
         <!-- Page Header -->
         <div class="flex items-center gap-2 px-4 py-3" style="background-color: var(--color-bg-default);">
             <!-- Menu Button -->
-            <button class="btn-icon-only btn-icon-medium" style="background-color: var(--color-bg-medium);">
+            <button class="btn-icon-only btn-icon-medium">
                 <div class="btn-icon">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                         <rect width="4" height="4" rx="1" fill="currentColor"/>
@@ -61,11 +61,11 @@
                     <circle cx="7" cy="7" r="5.5" stroke-width="1.5"/>
                     <path d="M11 11L14.5 14.5" stroke-width="1.5" stroke-linecap="round"/>
                 </svg>
-                <span class="typography-secondary-bold" style="color: var(--color-text-weak);">Search</span>
+                <span class="typography-secondary-bold text-weak">Search</span>
             </div>
 
             <!-- Notifications Button -->
-            <button class="btn-icon-only btn-icon-medium" style="background-color: var(--color-bg-medium);">
+            <button class="btn-icon-only btn-icon-medium">
                 <div class="btn-icon">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor">
                         <path d="M8 2C6.343 2 5 3.343 5 5V8L3 10V11H13V10L11 8V5C11 3.343 9.657 2 8 2Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -94,7 +94,7 @@
         <!-- Main Content -->
         <div class="flex-1 px-4 py-6 overflow-y-auto">
             <!-- Get Started Widget -->
-            <div class="bg-white rounded-lg p-4 mb-6" style="box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.08), 0px 0px 20px 0px rgba(0,0,0,0.04);">
+            <div class="bg-white rounded-lg p-4 mb-6 shadow-medium">
                 <!-- Progress Header -->
                 <div class="flex items-center gap-4 mb-4">
                     <!-- Progress Circle -->
@@ -112,7 +112,7 @@
                     </div>
 
                     <!-- Continue Button -->
-                    <button class="px-3 py-1.5 rounded-full" style="background-color: var(--color-action-bg-default); color: white;">
+                    <button class="btn btn-primary btn-small">
                         <span class="typography-secondary-bold">Continue</span>
                     </button>
                 </div>
@@ -129,9 +129,9 @@
                     <div class="flex-1">
                         <div class="flex items-center gap-1 mb-0.5">
                             <span class="typography-secondary-bold">Deposit funds</span>
-                            <span class="px-1 py-0.5 rounded text-xs font-bold" style="background-color: var(--color-action-bg-weak); color: var(--color-action-text-default);">+25%</span>
+                            <span class="label label-small label-action">+25%</span>
                         </div>
-                        <p class="typography-secondary" style="color: var(--color-text-weak);">Add money to your account</p>
+                        <p class="typography-secondary text-weak">Add money to your account</p>
                     </div>
                     <svg width="8" height="8" viewBox="0 0 8 8" fill="none" stroke="currentColor">
                         <path d="M2 1L5 4L2 7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -151,9 +151,9 @@
                     <div class="flex-1">
                         <div class="flex items-center gap-1 mb-0.5">
                             <span class="typography-secondary-bold">Discover investments</span>
-                            <span class="px-1 py-0.5 rounded text-xs font-bold" style="background-color: var(--color-action-bg-weak); color: var(--color-action-text-default);">+25%</span>
+                            <span class="label label-small label-action">+25%</span>
                         </div>
-                        <p class="typography-secondary" style="color: var(--color-text-weak);">Fund stocks and funds to invest in</p>
+                        <p class="typography-secondary text-weak">Fund stocks and funds to invest in</p>
                     </div>
                     <svg width="8" height="8" viewBox="0 0 8 8" fill="none" stroke="currentColor">
                         <path d="M2 1L5 4L2 7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -172,9 +172,9 @@
                     <div class="flex-1">
                         <div class="flex items-center gap-1 mb-0.5">
                             <span class="typography-secondary-bold">Move my savings</span>
-                            <span class="px-1 py-0.5 rounded text-xs font-bold" style="background-color: var(--color-action-bg-weak); color: var(--color-action-text-default);">+25%</span>
+                            <span class="label label-small label-action">+25%</span>
                         </div>
-                        <p class="typography-secondary" style="color: var(--color-text-weak);">Transfer stocks or funds to Nordnet</p>
+                        <p class="typography-secondary text-weak">Transfer stocks or funds to Nordnet</p>
                     </div>
                     <svg width="8" height="8" viewBox="0 0 8 8" fill="none" stroke="currentColor">
                         <path d="M2 1L5 4L2 7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -185,14 +185,14 @@
             <!-- Accounts Section -->
             <div class="mb-6">
                 <h2 class="typography-primary-extrabold mb-3 px-4">Accounts</h2>
-                <div class="bg-white rounded-lg p-4" style="box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.08), 0px 0px 20px 0px rgba(0,0,0,0.04);">
+                <div class="bg-white rounded-lg p-4 shadow-medium">
                     <div class="flex items-center gap-3">
-                        <div class="w-8 h-8 rounded-full flex items-center justify-center shrink-0" style="background-color: var(--color-bg-badge);">
-                            <span class="typography-tertiary-extrabold text-white">ISK</span>
+                        <div class="badge badge-m badge-cta">
+                            <div class="badge-status-icon">ISK</div>
                         </div>
                         <div class="flex-1">
                             <p class="typography-secondary-bold">Investments</p>
-                            <p class="typography-tertiary-bold" style="color: var(--color-text-weak);">0 kr</p>
+                            <p class="typography-tertiary-bold text-weak">0 kr</p>
                         </div>
                         <div class="text-right">
                             <p class="typography-secondary-bold">0,00%</p>
@@ -205,17 +205,17 @@
             <!-- Monthly Savings Section -->
             <div class="mb-6">
                 <h2 class="typography-primary-extrabold mb-3 px-4">Monthly savings</h2>
-                <div class="bg-white rounded-lg p-3 flex items-center gap-4" style="box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.08), 0px 0px 20px 0px rgba(0,0,0,0.04);">
+                <div class="bg-white rounded-lg p-3 flex items-center gap-4 shadow-medium">
                     <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor">
                         <circle cx="16" cy="16" r="12" stroke-width="2"/>
                         <path d="M16 8V16L20 20" stroke-width="2" stroke-linecap="round"/>
                     </svg>
                     <div class="flex-1">
-                        <p class="typography-tertiary-bold" style="color: var(--color-text-weak);">Per month</p>
+                        <p class="typography-tertiary-bold text-weak">Per month</p>
                         <p class="typography-primary-extrabold">€ 0</p>
-                        <p class="typography-tertiary-bold" style="color: var(--color-text-weak);">Set up monthly savings</p>
+                        <p class="typography-tertiary-bold text-weak">Set up monthly savings</p>
                     </div>
-                    <button class="px-3 py-1.5 rounded-full" style="background-color: var(--color-action-bg-default); color: white;">
+                    <button class="btn btn-primary btn-small">
                         <span class="typography-secondary-bold">New plan</span>
                     </button>
                 </div>
@@ -224,7 +224,7 @@
             <!-- Shortcuts Section -->
             <div class="mb-6">
                 <h2 class="typography-primary-extrabold mb-3 px-4">Shortcuts</h2>
-                <div class="bg-white rounded-lg overflow-hidden" style="box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.08), 0px 0px 20px 0px rgba(0,0,0,0.04);">
+                <div class="bg-white rounded-lg overflow-hidden shadow-medium">
                     <!-- Shortcut 1 -->
                     <div class="p-4 flex items-center gap-3 border-b" style="border-color: var(--color-border-weak);">
                         <div class="w-8 h-8 rounded-full flex items-center justify-center shrink-0" style="background-color: var(--color-bg-medium);">
@@ -234,7 +234,7 @@
                         </div>
                         <div class="flex-1">
                             <p class="typography-secondary-bold">Deposit money</p>
-                            <p class="typography-tertiary" style="color: var(--color-text-weak);">Make a deposit with an external payment</p>
+                            <p class="typography-tertiary text-weak">Make a deposit with an external payment</p>
                         </div>
                         <svg width="8" height="8" viewBox="0 0 8 8" fill="none" stroke="currentColor">
                             <path d="M2 1L5 4L2 7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -251,7 +251,7 @@
                         </div>
                         <div class="flex-1">
                             <p class="typography-secondary-bold">Monthly savings</p>
-                            <p class="typography-tertiary" style="color: var(--color-text-weak);">Create and manage your monthly savings</p>
+                            <p class="typography-tertiary text-weak">Create and manage your monthly savings</p>
                         </div>
                         <svg width="8" height="8" viewBox="0 0 8 8" fill="none" stroke="currentColor">
                             <path d="M2 1L5 4L2 7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -267,7 +267,7 @@
                         </div>
                         <div class="flex-1">
                             <p class="typography-secondary-bold">Withdraw money</p>
-                            <p class="typography-tertiary" style="color: var(--color-text-weak);">Withdraw money to another bank</p>
+                            <p class="typography-tertiary text-weak">Withdraw money to another bank</p>
                         </div>
                         <svg width="8" height="8" viewBox="0 0 8 8" fill="none" stroke="currentColor">
                             <path d="M2 1L5 4L2 7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -284,7 +284,7 @@
                         </div>
                         <div class="flex-1">
                             <p class="typography-secondary-bold">Open new account</p>
-                            <p class="typography-tertiary" style="color: var(--color-text-weak);">New account for savings and investments</p>
+                            <p class="typography-tertiary text-weak">New account for savings and investments</p>
                         </div>
                         <svg width="8" height="8" viewBox="0 0 8 8" fill="none" stroke="currentColor">
                             <path d="M2 1L5 4L2 7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -295,7 +295,7 @@
         </div>
 
         <!-- Bottom Tab Navigation -->
-        <div class="bg-white" style="box-shadow: 0px -2px 10px rgba(0,0,0,0.05);">
+        <div class="bg-white shadow-medium">
             <div class="flex">
                 <!-- Holdings Tab (Active) -->
                 <button class="flex-1 flex flex-col items-center pt-1 pb-0.5 gap-0.5">
@@ -304,25 +304,25 @@
                 </button>
 
                 <!-- Watchlists Tab -->
-                <button class="flex-1 flex flex-col items-center pt-1 pb-0.5 gap-0.5" style="color: var(--color-text-inactive);">
+                <button class="flex-1 flex flex-col items-center pt-1 pb-0.5 gap-0.5 text-weak">
                     <img src="../Asset/24/Gallery.svg" alt="Gallery" width="24" height="24">
                     <span class="typography-graph-bold">Watchlists</span>
                 </button>
 
                 <!-- Discover Tab -->
-                <button class="flex-1 flex flex-col items-center pt-1 pb-0.5 gap-0.5" style="color: var(--color-text-inactive);">
+                <button class="flex-1 flex flex-col items-center pt-1 pb-0.5 gap-0.5 text-weak">
                     <img src="../Asset/24/Group 12.svg" alt="Search" width="21" height="21">
                     <span class="typography-graph-bold">Discover</span>
                 </button>
 
                 <!-- Feed Tab -->
-                <button class="flex-1 flex flex-col items-center pt-1 pb-0.5 gap-0.5" style="color: var(--color-text-inactive);">
+                <button class="flex-1 flex flex-col items-center pt-1 pb-0.5 gap-0.5 text-weak">
                     <img src="../Asset/24/News.svg" alt="News" width="24" height="24">
                     <span class="typography-graph-bold">Feed</span>
                 </button>
 
                 <!-- Market Tab -->
-                <button class="flex-1 flex flex-col items-center pt-1 pb-0.5 gap-0.5" style="color: var(--color-text-inactive);">
+                <button class="flex-1 flex flex-col items-center pt-1 pb-0.5 gap-0.5 text-weak">
                     <img src="../Asset/24/Market.svg" alt="Market" width="24" height="24">
                     <span class="typography-graph-bold">Market</span>
                 </button>

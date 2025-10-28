@@ -333,7 +333,7 @@ button:focus-within,
 }
 
 /* Ensure proper touch targets for mobile */
-button, .selection-badge {
+button:not(.btn-icon-only), .selection-badge {
     min-height: 44px;
     min-width: 44px;
 }
