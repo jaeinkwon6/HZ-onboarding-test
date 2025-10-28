@@ -6,3 +6,7 @@ Thumbs.db
 
 # Ignore any empty directories that might cause issues
 # Add any other files you want to ignore here
+.vercel
+
+# Ignore generated public directory
+public/
