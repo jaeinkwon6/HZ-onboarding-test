@@ -309,6 +309,9 @@
     <script type="module">
         import { getAccountAliases, setAccountAliases, getSelectedAccounts } from './js/state.js';
 
+        // Clear any previously saved aliases to show clean default values
+        setAccountAliases({});
+
         // Initialize floating label behavior for all inputs
         function initializeInputs() {
             // Load saved aliases
