@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="styles.css">
     <script src="js/progress-stable.js"></script>
     <script src="js/smooth-transitions.js"></script>
+    <!-- reCAPTCHA script removed for local development -->
     <script>
         tailwind.config = {
             theme: {
@@ -55,28 +56,11 @@
         </div>
 
         <!-- Progress Header -->
-        <div class="progress-bar-with-controls">
-            <!-- Back Button -->
-            <button class="btn-icon-only btn-icon-medium">
-                <div class="btn-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
-                    </svg>
-                </div>
-            </button>
-            
-            <!-- Progress Bars -->
-            <div class="progress-container">
-                <div class="progress-step"></div>
-                <div class="progress-step"></div>
-                <div class="progress-step"></div>
-                <div class="progress-step"></div>
-            </div>
-            
+        <div class="flex justify-end px-4 py-2" style="background-color: var(--color-bg-weak);">
             <!-- Close Button -->
-            <button class="btn-icon-only btn-icon-medium">
+            <button class="btn-icon-only btn-icon-medium" style="background-color: var(--color-bg-strong); border-radius: 16px; padding: 8px;">
                 <div class="btn-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px;">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
                 </div>
@@ -90,9 +74,9 @@
 
         <!-- Main Content -->
         <div class="flex-1 px-4 py-6 flex flex-col">
-            <!-- Wallet Icon -->
+            <!-- Icon Badge -->
             <div class="mb-6">
-                <img src="../Asset/wallet-icon.svg" alt="Wallet" class="w-[52px] h-[52px]">
+                <img src="../Asset/Icon Badge.svg" alt="Account Icon" class="w-[48px] h-[48px]">
             </div>
 
             <!-- Section Header -->
@@ -107,14 +91,21 @@
                 <!-- Progress Steps -->
                 <div class="flex gap-4">
                     <div class="flex flex-col items-center gap-3.5 pt-2">
-                        <div class="w-6 h-6 rounded-full flex items-center justify-center" style="background-color: var(--color-positive-bg-weak);">
-                            <img src="../Asset/checkmark-icon.svg" alt="Complete" class="w-6 h-6">
+                        <!-- Step 1 - Completed -->
+                        <div class="w-6 h-6 rounded-full flex items-center justify-center" style="background-color: var(--color-accent-bg-weak);">
+                            <div class="w-2 h-2 rounded-full" style="background-color: var(--color-accent-bg-default);"></div>
                         </div>
+                        <!-- Connecting line -->
                         <div class="w-0.5 h-3" style="background-color: var(--color-bg-disabled);"></div>
+                        <!-- Step 2 - Current -->
                         <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold" style="background-color: var(--color-bg-disabled); color: var(--color-text-disabled);">2</div>
+                        <!-- Connecting line -->
                         <div class="w-0.5 h-3" style="background-color: var(--color-bg-disabled);"></div>
+                        <!-- Step 3 - Future -->
                         <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold" style="background-color: var(--color-bg-disabled); color: var(--color-text-disabled);">3</div>
+                        <!-- Connecting line -->
                         <div class="w-0.5 h-3" style="background-color: var(--color-bg-disabled);"></div>
+                        <!-- Step 4 - Future -->
                         <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold" style="background-color: var(--color-bg-disabled); color: var(--color-text-disabled);">4</div>
                     </div>
 
@@ -129,7 +120,7 @@
                             <div class="text-sm font-normal" style="color: var(--color-text-disabled);">Tell me about yourself</div>
                         </div>
                         <div class="flex flex-col gap-0">
-                            <div class="text-sm font-bold" style="color: var(--color-text-disabled);">Security questions</div>
+                            <div class="text-sm font-bold" style="color: var(--color-text-disabled);">Financial details</div>
                             <div class="text-sm font-normal" style="color: var(--color-text-disabled);">Answer questions about you and your savings</div>
                         </div>
                         <div class="flex flex-col gap-0">
@@ -142,23 +133,37 @@
 
             <!-- Bottom Section -->
             <div class="flex flex-col gap-6">
-                <img src="../Asset/recaptcha.png" alt="reCAPTCHA" class="w-full max-w-[313px] h-auto">
-                <p class="text-sm font-normal" style="color: var(--color-text-weak);">
-                    This is how Nordnet processes <a href="#" class="font-bold underline" style="color: var(--color-text-default);">your personal data</a>
+                <div class="flex flex-col gap-3">
+                    <!-- Mock reCAPTCHA for Development -->
+                    <div class="border border-gray-300 rounded-lg p-4 bg-white">
+                        <div class="flex items-center gap-3">
+                            <input type="checkbox" id="recaptcha-checkbox" class="w-4 h-4">
+                            <label for="recaptcha-checkbox" class="text-sm">I'm not a robot</label>
+                        </div>
+                        <div class="flex items-center justify-end gap-2 mt-2">
+                            <div class="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
+                                <div class="w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                            </div>
+                            <span class="text-xs text-gray-500">reCAPTCHA</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-sm font-normal" style="color: var(--color-text-default);">
+                    Remember that investments always involve risk
                 </p>
             </div>
         </div>
 
         <!-- Bottom Section -->
-        <div class="px-4 py-4" style="background-color: var(--color-bg-default);">
-            <a href="index.html" class="btn btn-primary btn-large w-full">
+        <div class="px-4 py-4" style="background-color: var(--color-bg-weak);">
+            <a href="index.html" class="w-full flex items-center justify-center px-5 py-3 rounded-full text-base font-bold" style="background-color: var(--color-bg-focus); color: var(--color-text-strong);">
                 Continue
             </a>
         </div>
 
         <!-- Home Indicator -->
-        <div class="h-6 flex items-center justify-center" style="background-color: var(--color-bg-default);">
-            <div class="w-[134px] h-[5px] bg-neutral-text rounded-full"></div>
+        <div class="h-6 flex items-center justify-center" style="background-color: var(--color-bg-weak);">
+            <div class="w-[134px] h-[5px] rounded-full" style="background-color: var(--color-icon-default);"></div>
         </div>
     </div>
 
