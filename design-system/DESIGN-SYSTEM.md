@@ -1473,6 +1473,367 @@ document.addEventListener('click', () => {
 
 **Dropdown Demo:** See `design-system/components-demo.html` (Dropdowns section) for all dropdown variants and interactive examples.
 
+### PIN Input Components
+
+PIN input components for secure code entry with multiple states, variants, and comprehensive interaction support. Perfect for PIN codes, verification codes, and other numeric input scenarios.
+
+#### Basic PIN Input Structure
+
+```html
+<!-- Basic 6-digit PIN Input -->
+<div class="pin-input-container">
+    <div class="pin-input-wrapper pin-input-6-digits" id="pinInput">
+        <div class="pin-digit" data-index="0">
+            <div class="pin-digit-content hidden"></div>
+        </div>
+        <div class="pin-digit" data-index="1">
+            <div class="pin-digit-content hidden"></div>
+        </div>
+        <div class="pin-digit" data-index="2">
+            <div class="pin-digit-content hidden"></div>
+        </div>
+        <div class="pin-digit" data-index="3">
+            <div class="pin-digit-content hidden"></div>
+        </div>
+        <div class="pin-digit" data-index="4">
+            <div class="pin-digit-content hidden"></div>
+        </div>
+        <div class="pin-digit" data-index="5">
+            <div class="pin-digit-content hidden"></div>
+        </div>
+    </div>
+</div>
+```
+
+#### PIN Input Variants
+
+**4-digit PIN Input**
+```html
+<div class="pin-input-container">
+    <div class="pin-input-wrapper pin-input-4-digits">
+        <div class="pin-digit" data-index="0">
+            <div class="pin-digit-content hidden"></div>
+        </div>
+        <div class="pin-digit" data-index="1">
+            <div class="pin-digit-content hidden"></div>
+        </div>
+        <div class="pin-digit" data-index="2">
+            <div class="pin-digit-content hidden"></div>
+        </div>
+        <div class="pin-digit" data-index="3">
+            <div class="pin-digit-content hidden"></div>
+        </div>
+    </div>
+</div>
+```
+
+**6-digit PIN Input (Default)**
+```html
+<div class="pin-input-container">
+    <div class="pin-input-wrapper pin-input-6-digits">
+        <!-- 6 digit elements as shown above -->
+    </div>
+</div>
+```
+
+#### PIN Input States
+
+**Empty State (Default)**
+```html
+<div class="pin-digit">
+    <div class="pin-digit-content hidden"></div>
+</div>
+```
+
+**Filled State (Numbers Visible)**
+```html
+<div class="pin-digit pin-digit-filled">
+    <div class="pin-digit-content">4</div>
+</div>
+```
+
+**Filled State (Numbers Hidden)**
+```html
+<div class="pin-digit pin-digit-filled">
+    <div class="pin-digit-content hidden">4</div>
+</div>
+```
+
+**Focus State**
+```html
+<div class="pin-digit pin-digit-focused">
+    <div class="pin-digit-content hidden"></div>
+</div>
+```
+
+**Error State**
+```html
+<div class="pin-digit pin-digit-error">
+    <div class="pin-digit-content">0</div>
+</div>
+```
+
+**Disabled State**
+```html
+<div class="pin-digit pin-digit-disabled">
+    <div class="pin-digit-content hidden"></div>
+</div>
+```
+
+#### PIN Input with Helper Text
+
+```html
+<div class="pin-input-container">
+    <div class="pin-input-wrapper pin-input-6-digits">
+        <!-- PIN digits -->
+    </div>
+    
+    <!-- Helper Text -->
+    <div class="pin-input-helper">
+        <div class="pin-input-helper-text">
+            Optional supporting text
+        </div>
+    </div>
+</div>
+```
+
+**Error Helper Text**
+```html
+<div class="pin-input-helper pin-input-helper-error">
+    <svg class="pin-input-helper-icon" viewBox="0 0 16 16" fill="none">
+        <circle cx="8" cy="8" r="7" stroke="#cc2269" stroke-width="1.5" fill="none"/>
+        <path d="M8 4v4.5" stroke="#cc2269" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="8" cy="11" r="0.5" fill="#cc2269"/>
+    </svg>
+    <div class="pin-input-helper-text">
+        Please enter a valid PIN code
+    </div>
+</div>
+```
+
+**Success Helper Text**
+```html
+<div class="pin-input-helper pin-input-helper-success">
+    <svg class="pin-input-helper-icon" viewBox="0 0 16 16" fill="none">
+        <circle cx="8" cy="8" r="7" stroke="#41a21a" stroke-width="1.5" fill="none"/>
+        <path d="M5 8l2 2 4-4" stroke="#41a21a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div class="pin-input-helper-text">
+        PIN code is valid
+    </div>
+</div>
+```
+
+#### PIN Input Sizes
+
+**Small PIN Input (40px)**
+```html
+<div class="pin-input-wrapper pin-input-6-digits pin-input-small">
+    <!-- PIN digits -->
+</div>
+```
+
+**Default PIN Input (48px)**
+```html
+<div class="pin-input-wrapper pin-input-6-digits">
+    <!-- PIN digits -->
+</div>
+```
+
+**Large PIN Input (56px)**
+```html
+<div class="pin-input-wrapper pin-input-6-digits pin-input-large">
+    <!-- PIN digits -->
+</div>
+```
+
+#### PIN Input Classes
+
+**Container Classes:**
+- `.pin-input-container` - Outer container for the PIN input system
+- `.pin-input-wrapper` - Main wrapper containing all digit inputs
+- `.pin-digit` - Individual digit input container
+- `.pin-digit-content` - Content container for number or dot display
+
+**State Modifiers:**
+- `.pin-digit-filled` - Applied when digit has a value
+- `.pin-digit-focused` - Applied to the currently focused digit
+- `.pin-digit-error` - Error state with red border
+- `.pin-digit-disabled` - Disabled state (greyed out, not interactive)
+- `.hidden` - Applied to content to show dots instead of numbers
+
+**Size Modifiers:**
+- `.pin-input-small` - Small size (40px digits)
+- `.pin-input-large` - Large size (56px digits)
+
+**Variant Modifiers:**
+- `.pin-input-4-digits` - 4-digit PIN input
+- `.pin-input-6-digits` - 6-digit PIN input (default)
+
+**Helper Classes:**
+- `.pin-input-helper` - Helper text container
+- `.pin-input-helper-error` - Error helper variant
+- `.pin-input-helper-success` - Success helper variant
+- `.pin-input-helper-icon` - Icon in helper text (16x16px)
+- `.pin-input-helper-text` - Helper text content
+
+#### Design Specifications
+
+**Dimensions:**
+- Default digit size: 48px × 48px
+- Small digit size: 40px × 40px
+- Large digit size: 56px × 56px
+- Border radius: 8px
+- Gap between digits: 8px
+
+**Typography:**
+- Digit content: 20px / 24px (Subtitle2, Bold)
+- Small digit content: 14px / 20px (Secondary, Bold)
+- Large digit content: 28px / 32px (H3, Bold)
+- Helper text: 12px / 16px (Tertiary, Regular)
+
+**Colors:**
+- Background: #f5f5f5 (neutral/background/medium)
+- Digit text: #1c1c1c (neutral/text/default)
+- Dot (hidden): #1c1c1c (neutral/text/default)
+- Error border: #cc2269 (negative/border/default)
+- Error text: #cc2269 (negative/text/default)
+- Success icon: #41a21a (positive/icon/default)
+- Disabled background: #eeeeee (neutral/background/disabled)
+- Disabled text: #9e9e9e (neutral/text/disabled)
+
+**Interaction States:**
+- Default: No border (transparent)
+- Hover: #e0e0e0 border (neutral/border/medium)
+- Focus: #bdbdbd border (neutral/border/default)
+- Error: #cc2269 border (negative/border/default)
+- Disabled: #eeeeee background (neutral/background/disabled)
+
+#### PIN Input Features
+
+- **Hidden Numbers**: Toggle between showing numbers or dots for security
+- **Multiple Sizes**: Small, default, and large variants
+- **Multiple Lengths**: 4-digit and 6-digit PIN inputs
+- **Visual States**: Empty, filled, focus, error, and disabled states
+- **Keyboard Navigation**: Arrow keys for navigation between digits
+- **Click Navigation**: Click any digit to focus and position cursor
+- **Auto-focus**: Automatically focuses the next empty digit
+- **Input Validation**: Only accepts numeric input
+- **Helper Text**: Support for error and success messages with icons
+- **Dark Mode**: Full dark mode support
+- **Accessibility**: Proper focus states and keyboard navigation
+
+#### JavaScript Integration
+
+```javascript
+// Basic PIN input functionality
+const pinInput = document.getElementById('pinInput');
+const pinDigitElements = pinInput.querySelectorAll('.pin-digit');
+const pinContentElements = pinInput.querySelectorAll('.pin-digit-content');
+
+// Create hidden input for PIN entry
+const hiddenInput = document.createElement('input');
+hiddenInput.type = 'text';
+hiddenInput.style.position = 'absolute';
+hiddenInput.style.left = '-9999px';
+hiddenInput.style.opacity = '0';
+hiddenInput.maxLength = 6;
+document.body.appendChild(hiddenInput);
+
+// Focus the hidden input when page loads
+hiddenInput.focus();
+
+let pinDigits = ['', '', '', '', '', ''];
+let isHidden = true; // Numbers are hidden by default
+
+// Handle input
+hiddenInput.addEventListener('input', function(e) {
+    const value = e.target.value.replace(/\D/g, ''); // Only allow digits
+    hiddenInput.value = value;
+    
+    // Update PIN array
+    pinDigits = ['', '', '', '', '', ''];
+    for (let i = 0; i < value.length && i < 6; i++) {
+        pinDigits[i] = value[i];
+    }
+    
+    // Update display
+    pinContentElements.forEach((content, index) => {
+        if (pinDigits[index]) {
+            // Show number or dot based on hidden state
+            content.textContent = isHidden ? '•' : pinDigits[index];
+            content.classList.toggle('hidden', isHidden);
+            pinDigitElements[index].classList.add('pin-digit-filled');
+        } else {
+            content.textContent = '';
+            content.classList.add('hidden');
+            pinDigitElements[index].classList.remove('pin-digit-filled');
+        }
+    });
+    
+    // Update current digit focus
+    pinDigitElements.forEach((digit, index) => {
+        digit.classList.remove('pin-digit-focused');
+    });
+    
+    if (value.length < 6) {
+        pinDigitElements[value.length].classList.add('pin-digit-focused');
+    }
+    
+    // Check if PIN is complete
+    if (value.length === 6) {
+        // Handle completion
+        console.log('PIN complete:', pinDigits.join(''));
+    }
+});
+
+// Handle clicks on PIN digits to focus input
+pinDigitElements.forEach((digit, index) => {
+    digit.addEventListener('click', () => {
+        hiddenInput.focus();
+        // Set cursor position to the clicked digit
+        hiddenInput.setSelectionRange(index, index);
+    });
+});
+
+// Handle keyboard navigation
+hiddenInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Backspace') {
+        return; // Allow backspace
+    }
+    
+    // Only allow digits
+    if (!/\d/.test(e.key)) {
+        e.preventDefault();
+    }
+    
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+        e.preventDefault();
+        const currentPos = hiddenInput.selectionStart;
+        if (e.key === 'ArrowLeft' && currentPos > 0) {
+            hiddenInput.setSelectionRange(currentPos - 1, currentPos - 1);
+        } else if (e.key === 'ArrowRight' && currentPos < pinDigits.length) {
+            hiddenInput.setSelectionRange(currentPos + 1, currentPos + 1);
+        }
+    }
+});
+```
+
+#### Usage Guidelines
+
+- Use 4-digit PINs for simple verification codes
+- Use 6-digit PINs for security codes and passwords
+- Always provide clear instructions for PIN entry
+- Use hidden numbers for sensitive PIN codes
+- Use error states with helpful error messages
+- Use success states sparingly for important validations
+- Ensure proper focus states for accessibility
+- Use helper text to guide users and provide feedback
+- Disable PIN inputs when actions are not available
+- Consider auto-navigation to next page when PIN is complete
+
+**PIN Input Demo:** See `design-system/components-demo.html` (PIN Input section) for all PIN input variants and interactive examples.
+
 ## 🌙 Dark Mode Support
 
 The design system includes comprehensive dark mode support. Enable dark mode by adding `data-theme="dark"` to the `<body>` element.

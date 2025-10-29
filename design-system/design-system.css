@@ -2620,7 +2620,236 @@ p {
 }
 
 /* ===================================
-   14. DISABLE FOCUS STATES
+   14. PIN INPUT COMPONENT (FROM FIGMA)
+   =================================== */
+
+/* PIN Input Container */
+.pin-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    position: relative;
+}
+
+/* PIN Input Wrapper - Contains all digit inputs */
+.pin-input-wrapper {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Individual PIN Digit Input */
+.pin-digit {
+    width: 48px;
+    height: 48px;
+    background-color: var(--color-bg-medium);
+    border: 1px solid transparent;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+/* PIN Digit Content - Number or dot */
+.pin-digit-content {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-subtitle2);
+    line-height: var(--line-height-subtitle2);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-default);
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Hidden number state - shows dots only when there's content */
+.pin-digit-content.hidden {
+    color: #1c1c1c !important;
+    font-size: 20px !important;
+    line-height: 24px !important;
+    opacity: 1 !important;
+    font-weight: 700 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+}
+
+/* Empty state - no content visible */
+.pin-digit-content:not(.hidden) {
+    color: transparent !important;
+}
+
+/* PIN Digit States */
+
+/* Default State */
+.pin-digit:hover:not(.pin-digit-disabled) {
+    border-color: var(--color-border-medium);
+}
+
+/* Focus State */
+.pin-digit.pin-digit-focused {
+    border: 2px solid #bdbdbd !important;
+    background-color: #f5f5f5 !important;
+    position: relative;
+}
+
+/* Cursor for focused PIN digit - only show when empty */
+.pin-digit.pin-digit-focused:not(.pin-digit-filled)::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 2px;
+    height: 20px;
+    background-color: #1c1c1c;
+    animation: blink 1s infinite;
+    z-index: 1;
+}
+
+/* Blinking animation for cursor */
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* Filled State */
+.pin-digit.pin-digit-filled {
+    background-color: #f5f5f5 !important;
+}
+
+/* Error State */
+.pin-digit.pin-digit-error {
+    border-color: var(--color-negative-border-default);
+    background-color: var(--color-bg-medium);
+}
+
+.pin-digit.pin-digit-error:hover:not(.pin-digit-disabled) {
+    border-color: var(--color-negative-icon-hover);
+}
+
+/* Disabled State */
+.pin-digit.pin-digit-disabled {
+    background-color: var(--color-bg-disabled);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* PIN Input Helper Text */
+.pin-input-helper {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: var(--font-size-tertiary);
+    line-height: var(--line-height-tertiary);
+    font-weight: var(--font-weight-regular);
+    min-height: 16px;
+}
+
+.pin-input-helper-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.pin-input-helper-text {
+    color: var(--color-text-weak);
+    flex: 1;
+}
+
+/* Error Helper */
+.pin-input-helper.pin-input-helper-error .pin-input-helper-text {
+    color: var(--color-negative-text-default);
+}
+
+.pin-input-helper.pin-input-helper-error .pin-input-helper-icon {
+    color: var(--color-negative-icon-default);
+}
+
+/* Success Helper */
+.pin-input-helper.pin-input-helper-success .pin-input-helper-text {
+    color: var(--color-text-default);
+}
+
+.pin-input-helper.pin-input-helper-success .pin-input-helper-icon {
+    color: var(--color-positive-icon-default);
+}
+
+/* PIN Input Sizes */
+.pin-input-wrapper.pin-input-small .pin-digit {
+    width: 40px;
+    height: 40px;
+}
+
+.pin-input-wrapper.pin-input-small .pin-digit-content {
+    font-size: var(--font-size-secondary);
+    line-height: var(--line-height-secondary);
+}
+
+.pin-input-wrapper.pin-input-large .pin-digit {
+    width: 56px;
+    height: 56px;
+}
+
+.pin-input-wrapper.pin-input-large .pin-digit-content {
+    font-size: var(--font-size-h3);
+    line-height: var(--line-height-h3);
+}
+
+/* PIN Input Variants */
+.pin-input-wrapper.pin-input-4-digits {
+    gap: 8px;
+}
+
+.pin-input-wrapper.pin-input-6-digits {
+    gap: 8px;
+}
+
+/* Dark Mode PIN Input Styles */
+[data-theme="dark"] .pin-digit {
+    background-color: var(--dark-bg-neutral);
+    border-color: transparent;
+}
+
+[data-theme="dark"] .pin-digit:hover:not(.pin-digit-disabled) {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] .pin-digit.pin-digit-focused {
+    border-color: var(--dark-text-default);
+}
+
+[data-theme="dark"] .pin-digit.pin-digit-error {
+    border-color: var(--color-negative-border-default);
+}
+
+[data-theme="dark"] .pin-digit.pin-digit-disabled {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .pin-digit-content {
+    color: var(--dark-text-default);
+}
+
+[data-theme="dark"] .pin-input-helper-text {
+    color: var(--dark-text-weak);
+}
+
+/* ===================================
+   15. DISABLE FOCUS STATES
    =================================== */
 
 /* Disable all focus states globally */
