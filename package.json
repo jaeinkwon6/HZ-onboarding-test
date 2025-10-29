@@ -5,7 +5,7 @@
   "main": "index.html",
   "scripts": {
     "dev": "live-server --port=3000 --open=/index.html",
-    "build": "mkdir -p public && cp -r src/* public/ && cp -r Asset public/ && echo 'Build complete - static files ready'",
+    "build": "mkdir -p public && cp -r src/* public/ && cp -r Asset public/ && cp -r design-system public/ && echo 'Build complete - static files ready'",
     "start": "live-server --port=3000 --open=/index.html"
   },
   "keywords": [

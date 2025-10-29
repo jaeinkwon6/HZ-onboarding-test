@@ -930,6 +930,31 @@ p {
     background-color: var(--button-tertiary-pressed-bg);
 }
 
+.btn-text {
+    background-color: transparent !important;
+    color: var(--color-text-default) !important;
+    border: none !important;
+    height: auto !important;
+    min-height: auto !important;
+    padding: 0 !important;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-text:hover:not(:disabled) {
+    background-color: transparent !important;
+    color: var(--color-text-weak) !important;
+}
+
+.btn-text:active:not(:disabled) {
+    background-color: transparent !important;
+    color: var(--color-text-weak) !important;
+}
+
 .btn-disabled {
     background-color: var(--button-disabled-bg);
     color: var(--button-disabled-text);
@@ -1903,8 +1928,8 @@ p {
 /* Card Title */
 .card-selectable-title {
     font-family: var(--font-family-primary);
-    font-size: var(--font-size-primary);
-    line-height: var(--line-height-primary);
+    font-size: var(--font-size-secondary);
+    line-height: var(--line-height-secondary);
     font-weight: var(--font-weight-bold);
     color: var(--color-text-default);
 }
