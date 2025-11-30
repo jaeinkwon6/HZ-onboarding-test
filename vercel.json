@@ -1,9 +1,29 @@
 {
   "version": 2,
-  "routes": [
+  "rewrites": [
     {
-      "src": "/",
-      "dest": "/intro.html"
+      "source": "/src/(.*)",
+      "destination": "/src/$1"
+    },
+    {
+      "source": "/design-system/(.*)",
+      "destination": "/design-system/$1"
+    },
+    {
+      "source": "/Asset/(.*)",
+      "destination": "/Asset/$1"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
     }
   ]
 }
+

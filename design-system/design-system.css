@@ -128,7 +128,8 @@
     --color-negative-bg-hover: #ac135a;
     --color-negative-bg-pressed: #78013a;
     --color-negative-bg-brand: #ff2b83;
-    --color-negative-border-default: #cc2269;
+    --color-negative-border-default: #da0e63;
+    --color-negative-text-default: #da0e63;
     --color-negative-icon-default: #cc2269;
     --color-negative-icon-hover: #ac135a;
     --color-negative-icon-pressed: #78013a;
@@ -852,6 +853,12 @@ p {
     box-sizing: border-box;
 }
 
+/* Left-aligned button variant for navigation buttons */
+.btn-left {
+    justify-content: flex-start;
+    text-align: left;
+}
+
 /* Button Sizes */
 .btn-small {
     height: var(--button-height-small);
@@ -1353,7 +1360,7 @@ p {
 }
 
 .input-wrapper.input-error {
-    border-color: var(--color-negative-border-default);
+    border: 1px solid var(--color-negative-border-default);
 }
 
 .input-wrapper.input-success {
@@ -1402,6 +1409,7 @@ p {
 .input-error-icon {
     width: 16px;
     height: 16px;
+    color: var(--color-negative-icon-default);
 }
 
 /* Success Icon SVG */

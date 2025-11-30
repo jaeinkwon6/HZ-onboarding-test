@@ -3,19 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Birth Details</title>
+    <title>Validation Navigation</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="../design-system/design-system.css">
-    <script src="js/progress-stable.js"></script>
-    <script src="js/smooth-transitions.js"></script>
-    <style>
-        
-        /* Date input wrapper */
-        .date-input-wrapper {
-            position: relative;
-        }
-    </style>
     <script>
         tailwind.config = {
             theme: {
@@ -54,111 +45,47 @@
 </head>
 <body class="bg-neutral-bg flex items-center justify-center min-h-screen relative" style="background-color: var(--color-bg-medium);">
     <!-- Mobile Container -->
-    <div class="w-full max-w-sm flex flex-col" style="height: 812px; background-color: var(--color-bg-default); min-width: 375px;">
+    <div id="mobile-container" class="w-full max-w-sm flex flex-col" style="height: 812px; background-color: var(--color-bg-default); min-width: 375px; position: relative;">
         <!-- iOS Status Bar -->
         <div class="flex items-center justify-between px-[52px] pt-[28px] pb-[16px] pr-[28px]" style="background-color: var(--color-bg-default);">
             <img src="../Asset/status-time.svg" alt="9:41" class="w-[33.328px] h-[12.576px]">
             <img src="../Asset/status-icons.svg" alt="Status icons" class="w-[79.67px] h-[13px]">
         </div>
 
-        <!-- Progress Header -->
-        <div class="progress-bar-with-controls">
-            <!-- Back Button -->
-            <button class="btn-icon-only btn-icon-medium" onclick="window.location.href='personal-details.html'">
-                <div class="btn-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
-                    </svg>
-                </div>
-            </button>
-            
-            <!-- Progress Bars -->
-            <div class="progress-container">
-                <div class="progress-step"></div>
-                <div class="progress-step"></div>
-                <div class="progress-step"></div>
-                <div class="progress-step"></div>
-            </div>
-            
-            <!-- Close Button -->
-            <button class="btn-icon-only btn-icon-medium">
-                <div class="btn-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                </div>
-            </button>
-        </div>
-        
-        <!-- Apply progress immediately after bar is rendered -->
-        <script>
-            if (window.__applyProgress__) window.__applyProgress__();
-        </script>
-
         <!-- Main Content -->
         <div class="flex-1 px-4 py-6 flex flex-col">
             <!-- Section Header -->
             <div class="mb-6">
                 <h1 class="typography-subtitle1 mb-3">
-                    Your birth details
+                    Validation Pages
                 </h1>
                 <p class="text-sm font-normal" style="color: var(--color-text-weak);">
-                    Enter your date, city, and country of birth (as shown on your ID)
+                    Select a validation page to test
                 </p>
             </div>
 
-            <!-- Input Fields -->
-            <div class="flex-1 flex flex-col gap-[18px] mb-6">
-                <!-- Date of Birth Input -->
-                <div class="input-container date-input-wrapper">
-                    <div class="input-wrapper">
-                        <div class="input-field">
-                            <input type="text" placeholder=" " id="dob-input" pattern="\d{2}-\d{2}-\d{4}">
-                            <label class="input-field-label">Date of birth (MM-DD-YYYY)</label>
-                        </div>
-                    </div>
-                </div>
+            <!-- Navigation Buttons -->
+            <div class="flex-1 flex flex-col gap-[16px] mb-6">
+                <!-- First Button - Validation 1a -->
+                <a href="validation-1a.html" class="btn btn-primary btn-large w-full btn-left">
+                    1-a Realtime
+                </a>
 
-                <!-- Birth Place Autocomplete Search -->
-                <div class="autocomplete-container">
-                    <div class="autocomplete-wrapper" id="birthplace-autocomplete">
-                        <svg class="autocomplete-search-icon" viewBox="0 0 16 16" fill="none">
-                            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.5" fill="none"/>
-                            <path d="M11 11l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                        </svg>
-                        <div class="autocomplete-field">
-                            <input type="text" placeholder=" " id="birthplace-input" autocomplete="off">
-                            <label class="autocomplete-label">Enter birth place</label>
-                        </div>
-                        <div class="autocomplete-spinner" id="birthplace-spinner" style="display: none;">
-                            <svg viewBox="0 0 16 16" fill="none">
-                                <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="2" fill="none" stroke-dasharray="31.416" stroke-dashoffset="31.416">
-                                    <animate attributeName="stroke-dasharray" dur="1s" values="0 31.416;15.708 15.708;0 31.416" repeatCount="indefinite"/>
-                                    <animate attributeName="stroke-dashoffset" dur="1s" values="0;-15.708;-31.416" repeatCount="indefinite"/>
-                                </circle>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="autocomplete-dropdown" id="birthplace-dropdown">
-                        <!-- Search results will be populated here -->
-                    </div>
-                    <div class="autocomplete-helper" id="birthplace-helper" style="display: none;">
-                        <svg class="autocomplete-helper-icon" viewBox="0 0 16 16" fill="none">
-                            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
-                            <path d="M8 4v4.5" stroke="currentColor" stroke-width="1.5"/>
-                            <circle cx="8" cy="11" r="0.5" fill="currentColor"/>
-                        </svg>
-                        <span class="autocomplete-helper-text">Please enter a valid birth place</span>
-                    </div>
-                </div>
+                <!-- Second Button - Validation 1b -->
+                <a href="validation-1b.html" class="btn btn-primary btn-large w-full btn-left">
+                    1-b Realtime with delays
+                </a>
+
+                <!-- Third Button - Validation 1c -->
+                <a href="validation-1c.html" class="btn btn-primary btn-large w-full btn-left">
+                    1-c Blurred
+                </a>
+
+                <!-- Fourth Button - Validation 2a -->
+                <a href="validation-2a.html" class="btn btn-primary btn-large w-full btn-left">
+                    2-a Always
+                </a>
             </div>
-        </div>
-
-        <!-- Bottom Section -->
-        <div class="px-4 py-4" style="background-color: var(--color-bg-default);">
-            <a href="contact-info.html" class="btn btn-primary btn-large w-full">
-                Continue
-            </a>
         </div>
 
         <!-- Home Indicator -->
@@ -166,255 +93,5 @@
             <div class="w-[134px] h-[5px] bg-neutral-text rounded-full"></div>
         </div>
     </div>
-
-    <!-- Home Button - Outside container, positioned absolutely -->
-    <a href="intro.html" class="absolute top-4 right-4 btn btn-primary btn-small">
-        Going back home
-    </a>
-
-    <script>
-        // Sample birth places data (in a real app, this would come from an API)
-        const birthPlaces = [
-            'Copenhagen, Denmark',
-            'Stockholm, Sweden',
-            'Oslo, Norway',
-            'Helsinki, Finland',
-            'Berlin, Germany',
-            'Amsterdam, Netherlands',
-            'Brussels, Belgium',
-            'Vienna, Austria',
-            'Zurich, Switzerland',
-            'Paris, France',
-            'London, United Kingdom',
-            'Dublin, Ireland',
-            'Madrid, Spain',
-            'Rome, Italy',
-            'Athens, Greece',
-            'Lisbon, Portugal',
-            'Warsaw, Poland',
-            'Prague, Czech Republic',
-            'Budapest, Hungary',
-            'Bucharest, Romania',
-            'Sofia, Bulgaria',
-            'Zagreb, Croatia',
-            'Ljubljana, Slovenia',
-            'Bratislava, Slovakia',
-            'Tallinn, Estonia',
-            'Riga, Latvia',
-            'Vilnius, Lithuania'
-        ];
-
-        // Initialize floating label behavior for all inputs
-        function initializeInputs() {
-            const allWrappers = document.querySelectorAll('.input-wrapper');
-            
-            allWrappers.forEach(wrapper => {
-                const input = wrapper.querySelector('input');
-                if (!input) return;
-                
-                // Make wrapper clickable to focus input
-                wrapper.addEventListener('click', (e) => {
-                    if (e.target === wrapper || e.target === wrapper.querySelector('.input-field') || e.target === wrapper.querySelector('.input-field-label')) {
-                        input.focus();
-                    }
-                });
-                
-                // Check initial value and add has-value class if needed
-                if (input.value && input.value.trim() !== '') {
-                    wrapper.classList.add('has-value');
-                }
-                
-                // Add input handler to manage has-value class for floating label
-                input.addEventListener('input', () => {
-                    if (input.value && input.value.trim() !== '') {
-                        wrapper.classList.add('has-value');
-                    } else {
-                        wrapper.classList.remove('has-value');
-                    }
-                });
-            });
-
-            // Date input formatting
-            const dobInput = document.getElementById('dob-input');
-            if (dobInput) {
-                dobInput.addEventListener('input', (e) => {
-                    let value = e.target.value.replace(/\D/g, '');
-                    if (value.length >= 2) {
-                        value = value.slice(0, 2) + '-' + value.slice(2);
-                    }
-                    if (value.length >= 5) {
-                        value = value.slice(0, 5) + '-' + value.slice(5, 9);
-                    }
-                    e.target.value = value;
-                });
-            }
-        }
-
-        // Initialize autocomplete functionality
-        function initializeAutocomplete() {
-            const autocompleteWrapper = document.getElementById('birthplace-autocomplete');
-            const input = document.getElementById('birthplace-input');
-            const dropdown = document.getElementById('birthplace-dropdown');
-            const spinner = document.getElementById('birthplace-spinner');
-            const helper = document.getElementById('birthplace-helper');
-            
-            let searchTimeout;
-            let isOpen = false;
-
-            // Make wrapper clickable to focus input
-            autocompleteWrapper.addEventListener('click', (e) => {
-                if (e.target === autocompleteWrapper || e.target === autocompleteWrapper.querySelector('.autocomplete-field') || e.target === autocompleteWrapper.querySelector('.autocomplete-label')) {
-                    input.focus();
-                }
-            });
-
-            // Handle input changes
-            input.addEventListener('input', (e) => {
-                const value = e.target.value.trim();
-                
-                // Update has-value class for floating label
-                if (value) {
-                    autocompleteWrapper.classList.add('has-value');
-                } else {
-                    autocompleteWrapper.classList.remove('has-value');
-                }
-
-                // Clear previous timeout
-                clearTimeout(searchTimeout);
-                
-                // Hide dropdown and helper if empty
-                if (!value) {
-                    hideDropdown();
-                    hideHelper();
-                    return;
-                }
-
-                // Show loading spinner
-                showSpinner();
-
-                // Simulate API delay
-                searchTimeout = setTimeout(() => {
-                    performSearch(value);
-                }, 300);
-            });
-
-            // Handle input focus
-            input.addEventListener('focus', () => {
-                const value = input.value.trim();
-                if (value) {
-                    performSearch(value);
-                }
-            });
-
-            // Handle input blur (with delay to allow clicking on dropdown items)
-            input.addEventListener('blur', () => {
-                setTimeout(() => {
-                    hideDropdown();
-                }, 200);
-            });
-
-            // Close dropdown when clicking outside
-            document.addEventListener('click', (e) => {
-                if (!autocompleteWrapper.contains(e.target)) {
-                    hideDropdown();
-                }
-            });
-
-            function performSearch(query) {
-                hideSpinner();
-                
-                // Filter birth places based on query
-                const results = birthPlaces.filter(place => 
-                    place.toLowerCase().includes(query.toLowerCase())
-                );
-
-                if (results.length > 0) {
-                    showDropdown(results, query);
-                    hideHelper();
-                } else {
-                    hideDropdown();
-                    showHelper('Can\'t find your birth place? <a href="#" class="autocomplete-manual-link">Fill it in manually</a>');
-                }
-            }
-
-            function showDropdown(results, query) {
-                dropdown.innerHTML = '';
-                
-                results.forEach((place, index) => {
-                    const item = document.createElement('div');
-                    item.className = 'autocomplete-item';
-                    item.innerHTML = `
-                        <svg class="autocomplete-item-icon" viewBox="0 0 16 16" fill="none">
-                            <path d="M8 2C5.79 2 4 3.79 4 6C4 9.5 8 13 8 13S12 9.5 12 6C12 3.79 10.21 2 8 2ZM8 7.5C7.17 7.5 6.5 6.83 6.5 6S7.17 4.5 8 4.5S9.5 5.17 9.5 6S8.83 7.5 8 7.5Z" fill="currentColor"/>
-                        </svg>
-                        <span class="autocomplete-item-text">${highlightText(place, query)}</span>
-                    `;
-                    
-                    item.addEventListener('click', () => {
-                        selectPlace(place);
-                    });
-                    
-                    dropdown.appendChild(item);
-                });
-                
-                dropdown.classList.add('open');
-                isOpen = true;
-            }
-
-            function hideDropdown() {
-                dropdown.classList.remove('open');
-                isOpen = false;
-            }
-
-            function selectPlace(place) {
-                input.value = place;
-                autocompleteWrapper.classList.add('has-value');
-                hideDropdown();
-                hideHelper();
-            }
-
-            function highlightText(text, query) {
-                if (!query) return text;
-                const regex = new RegExp(`(${query})`, 'gi');
-                return text.replace(regex, '<span class="autocomplete-item-highlight">$1</span>');
-            }
-
-            function showSpinner() {
-                spinner.style.display = 'block';
-            }
-
-            function hideSpinner() {
-                spinner.style.display = 'none';
-            }
-
-            function showHelper(message) {
-                helper.innerHTML = `
-                    <svg class="autocomplete-helper-icon" viewBox="0 0 16 16" fill="none">
-                        <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5"/>
-                        <path d="M8 4v4.5" stroke="currentColor" stroke-width="1.5"/>
-                        <circle cx="8" cy="11" r="0.5" fill="currentColor"/>
-                    </svg>
-                    <span class="autocomplete-helper-text">${message}</span>
-                `;
-                helper.style.display = 'flex';
-            }
-
-            function hideHelper() {
-                helper.style.display = 'none';
-            }
-        }
-
-        // Initialize on DOM ready
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => {
-                initializeInputs();
-                initializeAutocomplete();
-            });
-        } else {
-            initializeInputs();
-            initializeAutocomplete();
-        }
-    </script>
 </body>
 </html>
-

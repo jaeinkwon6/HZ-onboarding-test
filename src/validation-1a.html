@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birth Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../design-system/design-system.css">
+    <script src="js/progress-stable.js"></script>
+    <script src="js/smooth-transitions.js"></script>
+    <script src="js/country-selector.js"></script>
+    <script src="js/realtime-validation.js"></script>
+    <style>
+        
+        /* Date input wrapper */
+        .date-input-wrapper {
+            position: relative;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'neutral-bg': '#ffffff',
+                        'neutral-100': '#f5f5f5',
+                        'neutral-text': '#1c1c1c',
+                        'neutral-text-weak': '#6e6e6e',
+                        'neutral-icon': '#1c1c1c',
+                        'neutral-border': '#bdbdbd',
+                    },
+                    fontFamily: {
+                        'nordnet': ['Nordnet Sans Mono', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                    },
+                    fontSize: {
+                        'h1': ['40px', { lineHeight: '48px', fontWeight: '800' }],
+                        'h2': ['32px', { lineHeight: '40px', fontWeight: '800' }],
+                        'h3': ['28px', { lineHeight: '32px', fontWeight: '800' }],
+                        'subtitle1': ['24px', { lineHeight: '28px', fontWeight: '800' }],
+                        'subtitle2': ['20px', { lineHeight: '24px', fontWeight: '700' }],
+                        'primary': ['16px', { lineHeight: '24px', fontWeight: '400' }],
+                        'secondary': ['14px', { lineHeight: '20px', fontWeight: '400' }],
+                        'tertiary': ['12px', { lineHeight: '16px', fontWeight: '400' }],
+                        'graph': ['10px', { lineHeight: '14px', fontWeight: '400' }],
+                    },
+                    fontWeight: {
+                        'regular': '400',
+                        'bold': '700',
+                        'extrabold': '800',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-neutral-bg flex items-center justify-center min-h-screen relative" style="background-color: var(--color-bg-medium);">
+    <!-- Mobile Container -->
+    <div id="mobile-container" class="w-full max-w-sm flex flex-col" style="height: 812px; background-color: var(--color-bg-default); min-width: 375px; position: relative;">
+        <!-- iOS Status Bar -->
+        <div class="flex items-center justify-between px-[52px] pt-[28px] pb-[16px] pr-[28px]" style="background-color: var(--color-bg-default);">
+            <img src="../Asset/status-time.svg" alt="9:41" class="w-[33.328px] h-[12.576px]">
+            <img src="../Asset/status-icons.svg" alt="Status icons" class="w-[79.67px] h-[13px]">
+        </div>
+
+        <!-- Progress Header -->
+        <div class="progress-bar-with-controls">
+            <!-- Back Button -->
+            <button class="btn-icon-only btn-icon-medium">
+                <div class="btn-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </div>
+            </button>
+            
+            <!-- Progress Bars -->
+            <div class="progress-container">
+                <div class="progress-step"></div>
+                <div class="progress-step"></div>
+                <div class="progress-step"></div>
+                <div class="progress-step"></div>
+            </div>
+            
+            <!-- Close Button -->
+            <button class="btn-icon-only btn-icon-medium">
+                <div class="btn-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </div>
+            </button>
+        </div>
+        
+        <!-- Apply progress immediately after bar is rendered -->
+        <script>
+            if (window.__applyProgress__) window.__applyProgress__();
+        </script>
+
+        <!-- Main Content -->
+        <div class="flex-1 px-4 py-6 flex flex-col">
+            <!-- Section Header -->
+            <div class="mb-6">
+                <h1 class="typography-subtitle1 mb-3">
+                    Your birth details
+                </h1>
+                <p class="text-sm font-normal" style="color: var(--color-text-weak);">
+                    Enter your date, city, and country of birth (as shown on your ID)
+                </p>
+            </div>
+
+            <!-- Input Fields -->
+            <div class="flex-1 flex flex-col gap-[16px] mb-6">
+                <!-- Country Selection Input (FIRST) -->
+                <div class="input-container">
+                    <div class="input-wrapper" id="country-input-wrapper" style="cursor: pointer;">
+                        <div id="country-flag-container" style="display: none; width: 24px; height: 24px; margin-right: 12px; border-radius: 2px; overflow: hidden; pointer-events: none;">
+                            <img id="country-flag" src="" alt="Country flag" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="input-field" style="flex: 1;">
+                            <input type="text" placeholder=" " id="country-input" readonly style="cursor: pointer;">
+                            <label class="input-field-label">Country of birth</label>
+                        </div>
+                        <div class="input-icon" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; pointer-events: none;">
+                            <svg viewBox="0 0 16 16" fill="none" style="width: 100%; height: 100%;">
+                                <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="input-helper input-helper-error" id="country-error" role="alert" aria-hidden="true" hidden>
+                        <img src="../Asset/Error.svg" alt="" class="input-error-icon" aria-hidden="true" width="16" height="16">
+                        <span class="input-helper-text"></span>
+                    </div>
+                </div>
+
+                <!-- City of Birth Input (SECOND) -->
+                <div class="input-container">
+                    <div class="input-wrapper">
+                        <div class="input-field">
+                            <input type="text" placeholder=" " id="birthplace-input" autocomplete="off">
+                            <label class="input-field-label">City of birth</label>
+                        </div>
+                    </div>
+                    <div class="input-helper input-helper-error" id="birthplace-error" role="alert" aria-hidden="true" hidden>
+                        <img src="../Asset/Error.svg" alt="" class="input-error-icon" aria-hidden="true" width="16" height="16">
+                        <span class="input-helper-text"></span>
+                    </div>
+                </div>
+
+                <!-- Date of Birth Input (THIRD) -->
+                <div class="input-container date-input-wrapper">
+                    <div class="input-wrapper">
+                        <div class="input-field">
+                            <input type="text" placeholder=" " id="dob-input" pattern="\d{2}-\d{2}-\d{4}">
+                            <label class="input-field-label">Date of birth (DD-MM-YYYY)</label>
+                        </div>
+                    </div>
+                    <div class="input-helper input-helper-error" id="dob-error" role="alert" aria-hidden="true" hidden>
+                        <img src="../Asset/Error.svg" alt="" class="input-error-icon" aria-hidden="true" width="16" height="16">
+                        <span class="input-helper-text"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Section -->
+        <div class="px-4 py-4" style="background-color: var(--color-bg-default);">
+            <button class="btn btn-primary btn-large w-full" id="validation-1a-continue" type="button">
+                Continue
+            </button>
+        </div>
+
+        <!-- Home Indicator -->
+        <div class="h-6 flex items-center justify-center" style="background-color: var(--color-bg-default);">
+            <div class="w-[134px] h-[5px] bg-neutral-text rounded-full"></div>
+        </div>
+    </div>
+
+    <!-- Navigation Buttons - Outside container, positioned absolutely -->
+    <div class="absolute top-4 right-4 flex flex-col gap-2">
+        <a href="validation-1a.html" class="btn btn-primary btn-small btn-left">
+            1-a Realtime
+        </a>
+        <a href="validation-1b.html" class="btn btn-secondary btn-small btn-left">
+            1-b Realtime with delays
+        </a>
+        <a href="validation-1c.html" class="btn btn-secondary btn-small btn-left">
+            1-c Blurred
+        </a>
+        <a href="validation-2a.html" class="btn btn-secondary btn-small btn-left">
+            2-a Always
+        </a>
+    </div>
+
+    <script>
+        // Flag mapping
+        const FLAG_MAP = {
+            'Sweden': '../Asset/Sweden.svg',
+            'Norway': '../Asset/Norway.svg',
+            'Denmark': '../Asset/Denmark.svg',
+            'Finland': '../Asset/Finland.svg',
+            'Germany': '../Asset/Germany.png'
+        };
+        const GLOBAL_FLAG = '../Asset/Global.svg';
+
+        function getFlagForCountry(countryName) {
+            return FLAG_MAP[countryName] || GLOBAL_FLAG;
+        }
+
+        // Initialize floating label behavior for text inputs
+        function initializeInputs() {
+            const allWrappers = document.querySelectorAll('.input-wrapper');
+            
+            allWrappers.forEach(wrapper => {
+                const input = wrapper.querySelector('input');
+                if (!input) return;
+                
+                // Make wrapper clickable to focus input
+                wrapper.addEventListener('click', (e) => {
+                    if (e.target === wrapper || e.target === wrapper.querySelector('.input-field') || e.target === wrapper.querySelector('.input-field-label')) {
+                        input.focus();
+                    }
+                });
+                
+                // Check initial value and add has-value class if needed
+                if (input.value && input.value.trim() !== '') {
+                    wrapper.classList.add('has-value');
+                }
+                
+                // Add input handler to manage has-value class for floating label
+                input.addEventListener('input', () => {
+                    if (input.value && input.value.trim() !== '') {
+                        wrapper.classList.add('has-value');
+                    } else {
+                        wrapper.classList.remove('has-value');
+                    }
+                });
+            });
+
+            // Date input formatting (DD-MM-YYYY) with deletable dashes
+            const dobInput = document.getElementById('dob-input');
+            if (dobInput) {
+                dobInput.addEventListener('input', (e) => {
+                    const digits = e.target.value.replace(/\D/g, '').slice(0, 8);
+                    const dd = digits.slice(0, 2);
+                    const mm = digits.slice(2, 4);
+                    const yyyy = digits.slice(4, 8);
+                    let formatted = dd;
+                    if (mm) formatted += '-' + mm;
+                    if (yyyy) formatted += '-' + yyyy;
+                    e.target.value = formatted;
+                });
+            }
+        }
+
+        // Initialize country selection (single selection)
+        function initializeCountrySelection() {
+            const countryWrapper = document.getElementById('country-input-wrapper');
+            const countryInput = document.getElementById('country-input');
+            const countryFlagContainer = document.getElementById('country-flag-container');
+            const countryFlag = document.getElementById('country-flag');
+            let selectedCountry = countryInput.value ? countryInput.value.trim() : 'Germany';
+            let countrySheet = null;
+            let countryListObserver = null;
+
+            const updateCountryUI = (country) => {
+                selectedCountry = country || null;
+                countryInput.value = country || '';
+
+                if (selectedCountry) {
+                    countryWrapper.classList.add('has-value');
+                    countryFlag.src = getFlagForCountry(selectedCountry);
+                    countryFlagContainer.style.display = 'block';
+                    if (countrySheet) {
+                        countrySheet.setSelected([selectedCountry]);
+                    }
+                } else {
+                    countryWrapper.classList.remove('has-value');
+                    countryFlagContainer.style.display = 'none';
+                    countryFlag.src = '';
+                    if (countrySheet) {
+                        countrySheet.setSelected([]);
+                    }
+                }
+
+                countryInput.dispatchEvent(new Event('input', { bubbles: true }));
+            };
+
+            countrySheet = new CountrySelectorSheet({
+                container: document.getElementById('mobile-container'),
+                selected: selectedCountry ? [selectedCountry] : [],
+                onConfirm: (countries) => {
+                    if (countries.length > 0) {
+                        updateCountryUI(countries[countries.length - 1]);
+                    } else {
+                        updateCountryUI(null);
+                    }
+                }
+            });
+
+            const handleCountryClick = (event) => {
+                event.preventDefault();
+                event.stopImmediatePropagation();
+                const country = event.currentTarget.getAttribute('data-country');
+                updateCountryUI(country);
+                countrySheet.close();
+            };
+
+            const attachHandlers = () => {
+                const cancelBtn = document.getElementById('country-cancel-ds');
+                const confirmBtn = document.getElementById('country-confirm-ds');
+                if (cancelBtn && confirmBtn) {
+                    const actionsContainer = cancelBtn.parentElement;
+                    if (actionsContainer && !actionsContainer.dataset.singleSelectHidden) {
+                        actionsContainer.style.display = 'none';
+                        actionsContainer.dataset.singleSelectHidden = 'true';
+                    }
+                }
+
+                const countryList = document.getElementById('country-list-ds');
+                if (!countryList) return;
+
+                const bindButtons = () => {
+                    countryList.querySelectorAll('[data-country]').forEach(button => {
+                        if (button.dataset.singleSelectBound === 'true') return;
+                        button.dataset.singleSelectBound = 'true';
+                        button.addEventListener('click', handleCountryClick, { capture: true });
+                    });
+                };
+
+                bindButtons();
+
+                if (!countryListObserver) {
+                    countryListObserver = new MutationObserver(bindButtons);
+                    countryListObserver.observe(countryList, { childList: true, subtree: true });
+                }
+            };
+
+            const originalOpen = countrySheet.open;
+            countrySheet.open = function() {
+                originalOpen.call(this);
+                setTimeout(attachHandlers, 0);
+            };
+
+            const originalClose = countrySheet.close;
+            countrySheet.close = function() {
+                originalClose.call(this);
+                if (countryListObserver) {
+                    countryListObserver.disconnect();
+                    countryListObserver = null;
+                }
+            };
+
+            countryWrapper.addEventListener('click', () => {
+                countrySheet.setSelected(selectedCountry ? [selectedCountry] : []);
+                countrySheet.open();
+            });
+
+            updateCountryUI(selectedCountry);
+        }
+
+        // Initialize on DOM ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                initializeInputs();
+                initializeCountrySelection();
+                initializeRealtimeValidation();
+            });
+        } else {
+            initializeInputs();
+            initializeCountrySelection();
+            initializeRealtimeValidation();
+        }
+
+        function initializeRealtimeValidation() {
+            if (typeof window.createRealtimeValidation !== 'function') {
+                return;
+            }
+
+            const validator = window.createRealtimeValidation({
+                pageId: 'validation-1a',
+                continueButton: document.getElementById('validation-1a-continue'),
+                validationMode: 'realtime',
+                fields: [
+                    {
+                        name: 'country',
+                        input: document.getElementById('country-input'),
+                        wrapper: document.getElementById('country-input-wrapper'),
+                        helper: document.getElementById('country-error'),
+                        requiredMessage: 'Select the country shown on your ID.',
+                        validators: []
+                    },
+                    {
+                        name: 'city',
+                        input: document.getElementById('birthplace-input'),
+                        wrapper: document.getElementById('birthplace-input').closest('.input-wrapper'),
+                        helper: document.getElementById('birthplace-error'),
+                        requiredMessage: 'Enter your city of birth.',
+                        validators: [
+                            (value) => /^[A-Za-zÀ-ÖØ-öø-ÿ'\-\s]{2,}$/.test(value) || 'Use letters only for your city name.'
+                        ]
+                    },
+                    {
+                        name: 'dob',
+                        input: document.getElementById('dob-input'),
+                        wrapper: document.getElementById('dob-input').closest('.input-wrapper'),
+                        helper: document.getElementById('dob-error'),
+                        requiredMessage: 'Enter your date of birth.',
+                        validators: [
+                            (value) => {
+                                if (!/^\d{2}-\d{2}-\d{4}$/.test(value)) {
+                                    return 'Use the DD-MM-YYYY format.';
+                                }
+                                const [day, month, year] = value.split('-').map(Number);
+                                const date = new Date(year, month - 1, day);
+                                const isValidDate = date.getFullYear() === year && date.getMonth() === month - 1 && date.getDate() === day;
+                                if (!isValidDate) {
+                                    return 'Enter a real calendar date.';
+                                }
+                                const today = new Date();
+                                if (date > today) {
+                                    return 'Birth date cannot be in the future.';
+                                }
+                                if (year < 1900) {
+                                    return 'Enter a year after 1900.';
+                                }
+                                return true;
+                            }
+                        ]
+                    }
+                ]
+            });
+
+            // Trigger validation after a brief delay to ensure all fields are initialized
+            setTimeout(() => {
+                if (validator && typeof validator.refresh === 'function') {
+                    validator.refresh();
+                }
+            }, 100);
+        }
+    </script>
+</body>
+</html>
+

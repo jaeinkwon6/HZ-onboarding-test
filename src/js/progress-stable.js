@@ -7,7 +7,7 @@
   // Progress bar configuration - maps pages to 4-step flow
   const STEP_PAGES = [
     ['index.html', 'account-alias.html'],
-    ['personal-details.html', 'birth-details.html', 'contact-info.html', 'address-lookup.html', 'us-tax-liability.html', 'citizenship.html', 'tax-id.html'],
+    ['personal-details.html', 'birth-details.html', 'contact-info.html', 'address-lookup.html', 'address-manual.html', 'us-tax-liability.html', 'citizenship.html', 'tax-id.html', 'marketing-consent.html'],
     ['KYC-1.html', 'KYC-2.html', 'KYC-3.html', 'KYC-4.html', 'KYC-5.html', 'KYC-6.html', 'KYC-7.html', 'KYC-8.html', 'KYC-9.html'],
     []
   ];
