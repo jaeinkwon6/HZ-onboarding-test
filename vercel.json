@@ -2,6 +2,10 @@
   "version": 2,
   "rewrites": [
     {
+      "source": "/",
+      "destination": "/src/validation-1a.html"
+    },
+    {
       "source": "/src/(.*)",
       "destination": "/src/$1"
     },
@@ -24,6 +28,7 @@
         }
       ]
     }
-  ]
+  ],
+  "cleanUrls": true
 }
 
