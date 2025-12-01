@@ -14,13 +14,13 @@
   }
 
   const FLAG_MAP = {
-    'Sweden': '../Asset/Sweden.svg',
-    'Norway': '../Asset/Norway.svg',
-    'Denmark': '../Asset/Denmark.svg',
-    'Finland': '../Asset/Finland.svg',
-    'Germany': '../Asset/Germany.png'
+    'Sweden': '/Asset/Sweden.svg',
+    'Norway': '/Asset/Norway.svg',
+    'Denmark': '/Asset/Denmark.svg',
+    'Finland': '/Asset/Finland.svg',
+    'Germany': '/Asset/Germany.png'
   };
-  const GLOBAL_FLAG = '../Asset/Global.svg';
+  const GLOBAL_FLAG = '/Asset/Global.svg';
   const COUNTRY_LIST = [
     'Afghanistan','Albania','Algeria','Andorra','Angola','Argentina','Armenia','Australia','Austria','Azerbaijan',
     'Bahamas','Bahrain','Bangladesh','Barbados','Belarus','Belgium','Belize','Benin','Bhutan','Bolivia','Bosnia and Herzegovina','Botswana','Brazil','Brunei','Bulgaria','Burkina Faso','Burundi',

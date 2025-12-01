@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Birth Details</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="../design-system/design-system.css">
-    <script src="js/progress-stable.js"></script>
-    <script src="js/smooth-transitions.js"></script>
-    <script src="js/country-selector.js"></script>
-    <script src="js/realtime-validation.js"></script>
+    <link rel="stylesheet" href="/src/styles.css">
+    <link rel="stylesheet" href="/design-system/design-system.css">
+    <script src="/src/js/progress-stable.js"></script>
+    <script src="/src/js/smooth-transitions.js"></script>
+    <script src="/src/js/country-selector.js"></script>
+    <script src="/src/js/realtime-validation.js"></script>
     <style>
         
         /* Date input wrapper */
@@ -59,8 +59,8 @@
     <div id="mobile-container" class="w-full max-w-sm flex flex-col" style="height: 812px; background-color: var(--color-bg-default); min-width: 375px; position: relative;">
         <!-- iOS Status Bar -->
         <div class="flex items-center justify-between px-[52px] pt-[28px] pb-[16px] pr-[28px]" style="background-color: var(--color-bg-default);">
-            <img src="../Asset/status-time.svg" alt="9:41" class="w-[33.328px] h-[12.576px]">
-            <img src="../Asset/status-icons.svg" alt="Status icons" class="w-[79.67px] h-[13px]">
+            <img src="/Asset/status-time.svg" alt="9:41" class="w-[33.328px] h-[12.576px]">
+            <img src="/Asset/status-icons.svg" alt="Status icons" class="w-[79.67px] h-[13px]">
         </div>
 
         <!-- Progress Header -->
@@ -128,7 +128,7 @@
                         </div>
                     </div>
                     <div class="input-helper input-helper-error" id="country-error" role="alert" aria-hidden="true" hidden>
-                        <img src="../Asset/Error.svg" alt="" class="input-error-icon" aria-hidden="true" width="16" height="16">
+                        <img src="/Asset/Error.svg" alt="" class="input-error-icon" aria-hidden="true" width="16" height="16">
                         <span class="input-helper-text"></span>
                     </div>
                 </div>
@@ -142,7 +142,7 @@
                         </div>
                     </div>
                     <div class="input-helper input-helper-error" id="birthplace-error" role="alert" aria-hidden="true" hidden>
-                        <img src="../Asset/Error.svg" alt="" class="input-error-icon" aria-hidden="true" width="16" height="16">
+                        <img src="/Asset/Error.svg" alt="" class="input-error-icon" aria-hidden="true" width="16" height="16">
                         <span class="input-helper-text"></span>
                     </div>
                 </div>
@@ -156,7 +156,7 @@
                         </div>
                     </div>
                     <div class="input-helper input-helper-error" id="dob-error" role="alert" aria-hidden="true" hidden>
-                        <img src="../Asset/Error.svg" alt="" class="input-error-icon" aria-hidden="true" width="16" height="16">
+                        <img src="/Asset/Error.svg" alt="" class="input-error-icon" aria-hidden="true" width="16" height="16">
                         <span class="input-helper-text"></span>
                     </div>
                 </div>
@@ -195,13 +195,13 @@
     <script>
         // Flag mapping
         const FLAG_MAP = {
-            'Sweden': '../Asset/Sweden.svg',
-            'Norway': '../Asset/Norway.svg',
-            'Denmark': '../Asset/Denmark.svg',
-            'Finland': '../Asset/Finland.svg',
-            'Germany': '../Asset/Germany.png'
+            'Sweden': '/Asset/Sweden.svg',
+            'Norway': '/Asset/Norway.svg',
+            'Denmark': '/Asset/Denmark.svg',
+            'Finland': '/Asset/Finland.svg',
+            'Germany': '/Asset/Germany.png'
         };
-        const GLOBAL_FLAG = '../Asset/Global.svg';
+        const GLOBAL_FLAG = '/Asset/Global.svg';
 
         function getFlagForCountry(countryName) {
             return FLAG_MAP[countryName] || GLOBAL_FLAG;
