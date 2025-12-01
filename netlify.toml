@@ -1,0 +1,29 @@
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/"
+  to = "/src/validation-1a.html"
+  status = 200
+  force = false
+
+[[redirects]]
+  from = "/src/*"
+  to = "/src/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/design-system/*"
+  to = "/design-system/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/Asset/*"
+  to = "/Asset/:splat"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+
